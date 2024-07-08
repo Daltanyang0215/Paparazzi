@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1aa84fe4061c4544a0322aaf291ce66, type: 3}
+  m_Name: testMap1
+  m_EditorClassIdentifier: 
+  <Actordata>k__BackingField:
+  - <Position>k__BackingField: {x: -15.555556, y: 8.888889, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -532057338, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 0
+      <ActorColor>k__BackingField: 0
+      <ActorPart>k__BackingField: 0
+  <TargetElements>k__BackingField: []

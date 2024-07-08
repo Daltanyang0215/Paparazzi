@@ -36,6 +36,6 @@ public class MainUIManager : MonoBehaviour
 
     private void UpdateCaptureCountUI()
     {
-        _captureCountText.text = $"{MainGameManager.Instance.CurCaptureCount} / {MainGameManager.Instance.MaxCaptureCount}";
+        _captureCountText.text = $"{MainGameManager.Instance.MaxCaptureCount - MainGameManager.Instance.CurCaptureCount} / {MainGameManager.Instance.MaxCaptureCount}";
     }
 }
