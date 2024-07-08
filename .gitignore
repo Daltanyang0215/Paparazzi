@@ -72,6 +72,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # DownLoadFolders
+/[Aa]ssets/04.Images/*
+/[Aa]ssets/04.Images.meta
+
 /[Aa]ssets/Mini UI/*
 /[Aa]ssets/Mini UI.meta
 
