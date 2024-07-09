@@ -12,6 +12,7 @@ public class PlayerCameraCapture : MonoBehaviour
     [field: SerializeField] public List<Sprite> Captures { get; private set; } = new List<Sprite>();
 
 
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))

@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class PlayerCameraMovement : MonoBehaviour
 {
-    [Header("State")]
-    [SerializeField] private bool _isCanMove;
-
+    
     [Header("Proparty")]
     [SerializeField] private Vector2 _cameraClampHalfSize;
     [SerializeField] private Vector2 _cameraHalfSize;
@@ -24,7 +22,8 @@ public class PlayerCameraMovement : MonoBehaviour
     {
         _camera = GetComponent<CinemachineVirtualCamera>();
 
-        float cemarasize = Camera.main.orthographicSize;
+        //float cemarasize = Camera.main.orthographicSize;
+        float cemarasize = _camera.m_Lens.OrthographicSize;
         float aspectratio = Screen.width / (float)Screen.height;
         _cameraHalfSize = new Vector2(cemarasize * aspectratio, cemarasize);
         _cameraCanMoveSize = _cameraClampHalfSize - _cameraHalfSize;
@@ -35,10 +34,11 @@ public class PlayerCameraMovement : MonoBehaviour
         // 카메라 전체로 변경
         if (Input.GetMouseButtonDown(2))
         {
-            _isCanMove = !_isCanMove;
-            _camera.Priority = _isCanMove ? 100 : 1;
+            MainGameManager.Instance.IsCameraMove = !MainGameManager.Instance.IsCameraMove;
+            _camera.Priority = MainGameManager.Instance.IsCameraMove ? 100 : 1;
+            MainGameManager.Instance.CameraChangeAction?.Invoke();
         }
-        if (!_isCanMove) return;
+        if (!MainGameManager.Instance.IsCameraMove) return;
 
         // 마우스 조작
         if (Input.GetMouseButton(0))

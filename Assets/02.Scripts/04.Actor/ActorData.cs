@@ -46,6 +46,7 @@ public enum ActorPart
     None = 0,
     Smoke,
     Guitar,
+    Bag,
     Umbrella,
     Phone,
     rooftop,
@@ -56,5 +57,6 @@ public enum ActorColor
     None,
     Blue,
     Orange,
-    Greenm
+    Green,
+    Glay
 }

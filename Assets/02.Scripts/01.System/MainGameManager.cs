@@ -16,8 +16,13 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
-    [field: SerializeField] public List<Sprite> Captures { get; private set; } = new List<Sprite>();
+    [field:Header("MainState")]
+    [field : SerializeField] public bool IsCameraMove { get; set; }
+    public Action CameraChangeAction;
+
+    [field: SerializeField] public List<CaptureData> Captures { get; private set; } = new List<CaptureData>();
     private Camera _camera;
+
     [field: SerializeField] public byte MaxCaptureCount { get; private set; } = 5;
     public byte CurCaptureCount { get; private set; }
 
@@ -29,7 +34,7 @@ public class MainGameManager : MonoBehaviour
         CaptureAction += CheckDailyFinish;
     }
 
-    public void CameraCapture()
+    public void CameraCapture(ActorElement element)
     {
         if (CurCaptureCount >= MaxCaptureCount) return;
         CurCaptureCount++;
@@ -50,7 +55,7 @@ public class MainGameManager : MonoBehaviour
         Destroy(render);
 
         Sprite sprite = Sprite.Create(texture, rect, Vector2.zero);
-        Captures.Add(sprite);
+        Captures.Add(new CaptureData(sprite, element));
 
         CaptureAction?.Invoke();
     }
@@ -61,4 +66,18 @@ public class MainGameManager : MonoBehaviour
         Debug.Log("Finish");
     }
 
+}
+
+[Serializable] // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
+public class CaptureData
+{
+    public CaptureData(Sprite captureSprite, ActorElement captureElement)
+    {
+        CaptureSprite = captureSprite;
+        CaptureElement = captureElement;
+    }
+
+    // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
+    [field : SerializeField] public Sprite CaptureSprite { get; private set; }
+    [field: SerializeField] public ActorElement CaptureElement { get; private set; }
 }

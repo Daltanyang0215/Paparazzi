@@ -145,11 +145,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ActorData>k__BackingField:
+    <Position>k__BackingField: {x: 0, y: 0, z: 0}
+    <IsFlip>k__BackingField: 0
     <IdleSprite>k__BackingField: {fileID: 384749058, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
     <HightLightSprite>k__BackingField: {fileID: -70799113, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
-    <ActorType>k__BackingField: 2
-    <ActorElements>k__BackingField: 0
-  _isFlip: 0
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 0
+      <ActorPart>k__BackingField: 0
 --- !u!1 &6250388353599084935
 GameObject:
   m_ObjectHideFlags: 0
