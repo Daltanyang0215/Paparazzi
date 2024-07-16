@@ -581,4 +581,16 @@ MonoBehaviour:
       <ActorType>k__BackingField: 1
       <ActorColor>k__BackingField: 2
       <ActorPart>k__BackingField: 0
-  <TargetElements>k__BackingField: []
+  <TargetElements>k__BackingField:
+  - <ActorType>k__BackingField: 0
+    <ActorColor>k__BackingField: 0
+    <ActorPart>k__BackingField: 1
+  - <ActorType>k__BackingField: 0
+    <ActorColor>k__BackingField: 0
+    <ActorPart>k__BackingField: 3
+  - <ActorType>k__BackingField: 0
+    <ActorColor>k__BackingField: 0
+    <ActorPart>k__BackingField: 6
+  - <ActorType>k__BackingField: 0
+    <ActorColor>k__BackingField: 0
+    <ActorPart>k__BackingField: 7
