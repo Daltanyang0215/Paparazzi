@@ -23,9 +23,9 @@ public class MapManager : MonoBehaviour
     [ContextMenu("ActorInit")]
     public void ActorInit(MapDataSo mapdata)
     {
-        for (int i = 0; i < _actorParent.childCount; i++)
+        for (int i = _actorParent.childCount - 1; i >= 0; i--)
         {
-            Destroy(_actorParent.GetChild(0).gameObject);
+            Destroy(_actorParent.GetChild(i).gameObject);
         }
 
         foreach (ActorData actorData in mapdata.Actordata)
@@ -33,6 +33,7 @@ public class MapManager : MonoBehaviour
             Instantiate(_mapActorPrefab, actorData.Position, Quaternion.identity, _actorParent).SetData(actorData);
         }
     }
+#if UNITY_EDITOR
 
     #region ExportActorData
     [Header("ExportActorData")]
@@ -42,7 +43,7 @@ public class MapManager : MonoBehaviour
     public void ExportMapData()
     {
         List<MapActor> saveActor = new List<MapActor>();
-        
+
         _actorParent = transform.Find("Actors");
         foreach (MapActor actor in _actorParent.GetComponentsInChildren<MapActor>())
         {
@@ -53,4 +54,5 @@ public class MapManager : MonoBehaviour
     }
     #endregion
 
+#endif
 }

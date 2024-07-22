@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -27,11 +28,18 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private AnimationCurve _effectColorCurve;
     [SerializeField] private float _fadeTime = 0.5f;
     [field: Header("TargetMemo")]
-    [field :SerializeField] public MemoPanel MemoPanel { get; private set; }
+    [field: SerializeField] public MemoPanel MemoPanel { get; private set; }
     [Header("NextDay")]
     [SerializeField] private Button _nextDay;
     [field: SerializeField] public PhotoSetPanel PhotoSetPanel { get; private set; }
     [field: SerializeField] public CalculatePanel CalculatePanel { get; private set; }
+    [Header("Fade")]
+    [SerializeField] private Image _fadeImage;
+
+
+    [field: SerializeField] public DoorPanel DoorPanel { get; private set; }
+    [field: SerializeField] public NewsPanel NewsPanel { get; private set; }
+
 
     private void Start()
     {
@@ -42,6 +50,8 @@ public class MainUIManager : MonoBehaviour
         MainGameManager.Instance.DayEndAction += ShowNextDayButton;
         _effectImage.enabled = false;
         _nextDay.gameObject.SetActive(false);
+
+        _fadeImage.color = Color.black;
     }
 
     private void Update()
@@ -82,5 +92,35 @@ public class MainUIManager : MonoBehaviour
     private void ShowNextDayButton()
     {
         _nextDay.gameObject.SetActive(true);
+    }
+
+    public void FadeEffect(bool fadeIn , Action fadeAfterAction = null)
+    {
+        if (fadeIn)
+            StartCoroutine(FadeInEffect(fadeAfterAction));
+        else
+            StartCoroutine(FadeOutEffect());
+    }
+
+    private IEnumerator FadeInEffect(Action fadeAfterAction)
+    {
+        float t = 0;
+        while (t < _fadeTime)
+        {
+            t += Time.deltaTime;
+            _fadeImage.color = new Color(0, 0, 0, (t / _fadeTime));
+            yield return null;
+        }
+        fadeAfterAction?.Invoke();
+    }
+    private IEnumerator FadeOutEffect()
+    {
+        float t = 0;
+        while (t < _fadeTime)
+        {
+            t += Time.deltaTime;
+            _fadeImage.color = new Color(0, 0, 0, 1 - (t / _fadeTime));
+            yield return null;
+        }
     }
 }

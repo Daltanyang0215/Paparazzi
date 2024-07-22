@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerCameraMovement : MonoBehaviour
 {
-    
+
     [Header("Proparty")]
     [SerializeField] private Vector2 _cameraClampHalfSize;
     [SerializeField] private Vector2 _cameraHalfSize;
@@ -53,7 +53,20 @@ public class PlayerCameraMovement : MonoBehaviour
         // 키보드 조작
         else
         {
-            _inputVec = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Vector2 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            _inputVec.x = pos.x switch
+            {
+                < 0.1f => -1,
+                > 0.9f => 1,
+                _ => 0f,
+            };
+            _inputVec.y = pos.y switch
+            {
+                < 0.1f => -1,
+                > 0.9f => 1,
+                _ => 0f,
+            };
+            //_inputVec = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
 
         // 클램핑

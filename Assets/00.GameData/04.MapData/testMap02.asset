@@ -1,0 +1,597 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1aa84fe4061c4544a0322aaf291ce66, type: 3}
+  m_Name: testMap02
+  m_EditorClassIdentifier: 
+  <Actordata>k__BackingField:
+  - <Position>k__BackingField: {x: -15.555556, y: 8.888889, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -532057338, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -3.3333335, y: -35, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 384749058, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -70799113, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 17.5, y: -23.888887, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 384749058, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -70799113, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 9.166667, y: -11.944445, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 384749058, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -70799113, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -0.5555556, y: -0.2777778, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -632057887, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -991243534, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -7.2222223, y: -18.055557, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -632057887, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -991243534, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -15.833334, y: -16.666668, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -632057887, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -991243534, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 29.166668, y: 6.666667, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 1092072990, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 119154618, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 5.555556, y: 15.833334, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1683863739, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 760012063, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -32.222225, y: -34.16667, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -578682313, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 998418385, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 7
+  - <Position>k__BackingField: {x: 43.611115, y: 32.5, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1683863739, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 760012063, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 48.055557, y: 14.722223, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 1092072990, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 119154618, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 39.444447, y: -3.8888893, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 384749058, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -70799113, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 46.666668, y: 24.444447, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 384749058, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -70799113, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 68.611115, y: 36.666668, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 384749058, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -70799113, guid: 5793a40920bb5484c92f18af2586fd07, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 2
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 45.000004, y: -6.3888893, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -532057338, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 12.500001, y: -38.333336, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -532057338, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 62.500004, y: -17.222223, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 1532329627, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 5
+  - <Position>k__BackingField: {x: -21.38889, y: 5.277778, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 585350248, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1228786019, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 31.388891, y: -19.166668, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -582786133, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1827707524, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 49.444447, y: -32.77778, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 900043740, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 2030243695, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 5
+  - <Position>k__BackingField: {x: -24.444447, y: 1.1111112, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -355582624, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1428510776, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -20.833334, y: 1.388889, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1255547673, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -2112728798, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 4
+      <ActorPart>k__BackingField: 5
+  - <Position>k__BackingField: {x: -47.77778, y: -13.611112, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -672452944, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -2112728798, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 4
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 34.444447, y: -18.333334, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -672452944, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -2112728798, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 4
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 52.222225, y: -37.222225, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -672452944, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -2112728798, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 4
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -25.833334, y: -3.0555558, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -532057338, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -30.555557, y: -6.9444447, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 334279226, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1074492822, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 1
+  - <Position>k__BackingField: {x: 40.555557, y: -13.611112, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 334279226, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1074492822, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 1
+  - <Position>k__BackingField: {x: -53.611115, y: 28.611113, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -26667563, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1818610959, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 1
+  - <Position>k__BackingField: {x: -35, y: -10.277779, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -330929738, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: -3.0555573, y: 20.833336, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -330929738, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: 8.611112, y: 29.166668, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -330929738, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: 17.5, y: 37.222225, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -330929738, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: -36.944447, y: -13.888889, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -532057338, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -0.27777767, y: 23.333334, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1548677782, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -45.555557, y: -10, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 50795791, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 5
+  - <Position>k__BackingField: {x: 10, y: 33.333336, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -532057338, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 5.5555553, y: 32.5, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1200973949, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -2112728798, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 5
+  - <Position>k__BackingField: {x: -41.111115, y: -14.444445, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -428207495, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: -8.055557, y: 17.500002, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -428207495, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: -47.77778, y: -6.9444456, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -428207495, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: 13.888889, y: 38.88889, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -428207495, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: 14.722223, y: 34.166668, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -428207495, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: -25.277779, y: 16.38889, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -26667563, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1818610959, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 1
+  - <Position>k__BackingField: {x: -44.444447, y: -18.333334, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -428207495, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1364066218, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 3
+  - <Position>k__BackingField: {x: -60.000004, y: -34.722225, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1548677782, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -57.500004, y: -31.111113, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 1532329627, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1547353614, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 5
+  - <Position>k__BackingField: {x: -45.555557, y: -22.777779, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -643333967, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -2112728798, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -48.888893, y: -26.111113, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 1321558013, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1068324229, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 4
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 68.88889, y: -19.722223, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1621483569, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1646216854, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 29.166668, y: -27.777779, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1621483569, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1646216854, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 56.111115, y: -26.38889, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 1808820974, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -847046878, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 2
+  - <Position>k__BackingField: {x: 58.055557, y: -27.500002, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 1408755408, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -847046878, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 2
+  - <Position>k__BackingField: {x: 54.166668, y: -25.277779, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 362733660, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -847046878, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 2
+  - <Position>k__BackingField: {x: 30.833334, y: -27.500002, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: 447320964, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1646216854, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 4
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 46.111115, y: -18.055557, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -226984388, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -2117921013, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 72.77778, y: -19.166668, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -374132778, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1646216854, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 75.27778, y: 10.277779, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -374132778, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1646216854, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 1.1111112, y: 34.166668, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 1538563572, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1074492822, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 4
+      <ActorPart>k__BackingField: 1
+  - <Position>k__BackingField: {x: -15.833336, y: 34.44445, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 964853429, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1818610959, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 1
+  - <Position>k__BackingField: {x: 1.9444437, y: 38.333336, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -1199178779, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1428510776, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -20.833334, y: 10.277779, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 261883746, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1428510776, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 68.333336, y: -28.055557, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 261883746, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1428510776, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -25.000004, y: 10.277779, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: 1299349589, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1428510776, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -19.444445, y: 34.722225, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -26667563, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1818610959, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 1
+  - <Position>k__BackingField: {x: -55.833336, y: 22.222223, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -1621483569, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: 1646216854, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 6
+  - <Position>k__BackingField: {x: 66.111115, y: 23.055557, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -811437537, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -1926878923, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 3
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -37.77778, y: 34.722225, z: 0}
+    <IsFlip>k__BackingField: 0
+    <IdleSprite>k__BackingField: {fileID: -316478883, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -1926878923, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: 62.500004, y: 23.333334, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -316478883, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -1926878923, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 2
+      <ActorPart>k__BackingField: 0
+  - <Position>k__BackingField: {x: -41.11111, y: 34.722225, z: 0}
+    <IsFlip>k__BackingField: 1
+    <IdleSprite>k__BackingField: {fileID: -990630813, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <HightLightSprite>k__BackingField: {fileID: -1926878923, guid: ad7178108a00ec94a972b43b5b582fc2, type: 3}
+    <ActorElement>k__BackingField:
+      <ActorType>k__BackingField: 1
+      <ActorColor>k__BackingField: 1
+      <ActorPart>k__BackingField: 0
+  <TargetElement>k__BackingField:
+    <ActorType>k__BackingField: 0
+    <ActorColor>k__BackingField: 0
+    <ActorPart>k__BackingField: 5
+  <TargetNewComant>k__BackingField: "<size=50>\uAE38\uAC70\uB9AC \uD578\uB4DC\uD3F0
+    \uC0AC\uC6A9 \uAE08\uC9C0</size>\n\n\uAE38\uAC70\uB9AC\uC5D0\uC11C \uD578\uB4DC\uD3F0
+    \uC0AC\uC6A9\uC774 \uAE08\uC9C0\uB429\uB2C8\uB2E4. \uC774\uBC88 \uBC95\uC548\uC740
+    \uBCF4\uD589\uC790 \uC548\uC804\uC744 \uCD5C\uC6B0\uC120\uC73C\uB85C \uB450\uACE0
+    \uC788\uC73C\uBA70, \uBCF4\uD589 \uC911 \uC2A4\uB9C8\uD2B8\uD3F0 \uC0AC\uC6A9\uC73C\uB85C
+    \uC778\uD55C \uC0AC\uACE0\uB97C \uC608\uBC29\uD558\uACE0\uC790 \uB9C8\uB828\uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uC815\uBD80\uB294
+    \uC774\uBC88 \uBC95\uC548 \uC2DC\uD589\uC758 \uD6A8\uC728\uC131\uC744 \uB192\uC774\uAE30
+    \uC704\uD574 \uAE38\uAC70\uB9AC\uC5D0\uC11C \uD578\uB4DC\uD3F0 \uC0AC\uC6A9\uC744
+    \uD558\uB294 \uC0AC\uB78C\uB4E4\uC744 \uC0AC\uC9C4\uC73C\uB85C \uCC0D\uC5B4 \uC2E0\uACE0\uD558\uBA74
+    \uD3EC\uC0C1\uC744 \uC81C\uACF5\uD55C\uB2E4\uACE0 \uBC1C\uD45C\uD558\uC600\uC2B5\uB2C8\uB2E4."

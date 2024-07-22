@@ -21,18 +21,26 @@ public class CalculatePanel : MonoBehaviour
     [SerializeField] private int _addCoinValue;
     [SerializeField] private int _subCoinValue;
 
-    public void ShowPanel()
+    public void ShowPanel(bool show)
     {
-        _canvas.enabled = true;
+        _canvas.enabled = show;
+        if (!show) return;
 
         int addPoint = 0;
         int addCoin = 0;
+
+        ActorElement target = MainGameManager.Instance.Target;
+
         foreach (CaptureData capture in MainGameManager.Instance.Captures)
         {
             // 폐기는 점수 제외
             if (capture.RequesterType == RequesterType.None) continue;
 
-            if (capture.CaptureElement.ActorPart == MainGameManager.Instance.Target.ActorPart)
+
+
+            if ((target.ActorType == ActorType.None || target.ActorType == capture.CaptureElement.ActorType) &&
+                (target.ActorColor == ActorColor.None || target.ActorColor == capture.CaptureElement.ActorColor) &&
+                (target.ActorPart == ActorPart.None || target.ActorPart == capture.CaptureElement.ActorPart))
             {
                 addPoint += _requestSliderValue;
                 addCoin += _addCoinValue;

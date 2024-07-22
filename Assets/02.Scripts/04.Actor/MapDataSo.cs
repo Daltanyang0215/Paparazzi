@@ -14,10 +14,14 @@ public class MapDataSo : ScriptableObject
     /// <summary>
     /// 해당 맵에서 찍어야 될 타켓들의 데이터리스트
     /// </summary>
-    [field: SerializeField] public List<ActorElement> TargetElements { get; private set; }
+    [field: SerializeField] public ActorElement TargetElement { get; private set; }
+    [field: TextArea(3, 15)]
+    [field: SerializeField] public string TargetNewComant { get; private set; }
 
+#if UNITY_EDITOR
     public static void CreateMapDataSO(string DataName, List<MapActor> mapActors)
     {
+
         MapDataSo saveData = CreateInstance<MapDataSo>();
 
         saveData.Actordata = new List<ActorData>();
@@ -34,5 +38,6 @@ public class MapDataSo : ScriptableObject
         AssetDatabase.CreateAsset(saveData, $"Assets/00.GameData/04.MapData/{DataName}.asset");
         AssetDatabase.Refresh();
     }
+#endif
 }
 

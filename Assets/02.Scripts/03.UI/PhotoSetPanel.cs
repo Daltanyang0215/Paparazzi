@@ -7,7 +7,7 @@ public class PhotoSetPanel : MonoBehaviour
 {
     [Header("Page")]
     [SerializeField] private Canvas _canvas;
-    [SerializeField] private CalculatePanel _nextPage;
+    
 
     [Header("PhotoList")]
     [SerializeField] private Transform _photoListParent;
@@ -107,6 +107,6 @@ public class PhotoSetPanel : MonoBehaviour
 
         _checkPanel.gameObject.SetActive(false);
         _canvas.enabled = false;
-        _nextPage.ShowPanel();
+        MainGameManager.Instance.ChangeNextState();
     }
 }
