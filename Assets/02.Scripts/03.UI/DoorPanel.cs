@@ -2,42 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
-public class DoorPanel : MonoBehaviour
+public class DoorPanel : UICanvasBase
 {
-    private Canvas _canvas;
     [SerializeField] private TMP_Text _dayText;
     [SerializeField] private DoorPaperObject _doorObject;
     [SerializeField] private Image _doorEffect;
 
-    private void Awake()
+    protected override void Awake()
     {
-        _canvas = GetComponent<Canvas>();
+        base.Awake();
+        _doorObject.Init(this);
+        //TODO 디버그용, 나중에 지워야 됨
+        canvas.enabled = true;
     }
 
-    public void ShowPanel(bool show)
+    public override void ShowPanel()
     {
-        _canvas.enabled = show;
-        MainUIManager.Instance.MemoPanel.gameObject.SetActive(!show);
-        _doorObject.Init(this);
+        base.ShowPanel();
+        MainUIManager.Instance.MemoPanel.ShowPanel();
+        _dayText.enabled = false;
+
         StartCoroutine(DayCountAnimation());
+        StartCoroutine(KnockAnimation());
     }
 
     public void CheckFinsh()
     {
         if (!_doorObject.IsAnimationFinish) return;
-        MainGameManager.Instance.ChangeNextState();
+        DaySystem.Instance.ChangeState(false);
     }
 
     private IEnumerator DayCountAnimation()
     {
-        _dayText.text = MainGameManager.Instance.DayCount.ToString() + " 일차";
-        _doorEffect.enabled = false;
+        yield return new WaitForSeconds(1);
+        _dayText.text = DaySystem.Instance.DayCount.ToString() + " 일차";
 
         float t = 0;
         float maxt = 1;
         Color textColor = _dayText.color;
+        _dayText.enabled = true;
         while (t < maxt)
         {
             textColor.a = Mathf.Lerp(0, 1, t / maxt);
@@ -47,17 +53,8 @@ public class DoorPanel : MonoBehaviour
         }
         textColor.a = 1;
         _dayText.color = textColor;
-        yield return new WaitForSeconds(0.1f);
 
-        _doorEffect.enabled = true;
-        yield return new WaitForSeconds(0.1f);
-        _doorEffect.enabled = false;
-        yield return new WaitForSeconds(0.1f);
-        _doorEffect.enabled = true;
-        yield return new WaitForSeconds(0.1f);
-        _doorEffect.enabled = false;
-
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         t = 0;
         while (t < maxt)
@@ -69,5 +66,22 @@ public class DoorPanel : MonoBehaviour
         }
         textColor.a = 0;
         _dayText.color = textColor;
+    }
+    private IEnumerator KnockAnimation()
+    {
+        _doorEffect.enabled = false;
+        yield return new WaitForSeconds(2);
+
+        _doorEffect.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        _doorEffect.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        _doorEffect.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        _doorEffect.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+
+
+        _doorObject.ShowAnimation();
     }
 }

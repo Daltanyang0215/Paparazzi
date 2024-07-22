@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MemoPanel : MonoBehaviour
+public class MemoPanel : UICanvasBase
 {
     [SerializeField] private RectTransform _memoTransfrom;
     [SerializeField] private TMP_Text _memoText;
-    public void ShowPanel(bool show)
+    public void OpenMenoList(bool show)
     {
         _memoText.transform.parent.gameObject.SetActive(show);
         StartCoroutine(MemoAnimation(show));

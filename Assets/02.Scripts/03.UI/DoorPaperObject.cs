@@ -20,14 +20,17 @@ public class DoorPaperObject : MonoBehaviour, IDragHandler
     public void Init(DoorPanel doorCanvas)
     {
         _doorCanvas = doorCanvas;
+        _rect.gameObject.SetActive(false);
+    }
+
+    public void ShowAnimation()
+    {
+        _rect.gameObject.SetActive(true);
         StartCoroutine(StartAnimation());
     }
 
     private IEnumerator StartAnimation()
     {
-        _rect.anchoredPosition = Vector3.up * 2000;
-        yield return new WaitForSeconds(2f);
-
         float startPos = 600;
         float endPos = 100;
         float maxt = .5f;
@@ -69,7 +72,7 @@ public class DoorPaperObject : MonoBehaviour, IDragHandler
         _isCanDrag = true;
         IsAnimationFinish = true;
 
-
+        _rect.gameObject.SetActive(false);
         _doorCanvas.CheckFinsh();
     }
 

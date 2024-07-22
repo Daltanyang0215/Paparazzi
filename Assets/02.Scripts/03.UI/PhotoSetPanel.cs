@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PhotoSetPanel : MonoBehaviour
+public class PhotoSetPanel : UICanvasBase
 {
-    [Header("Page")]
-    [SerializeField] private Canvas _canvas;
-    
-
     [Header("PhotoList")]
     [SerializeField] private Transform _photoListParent;
     [SerializeField] private PhotoElement _photoElement;
@@ -50,9 +46,9 @@ public class PhotoSetPanel : MonoBehaviour
         _photoElements.Find(x => x.CaptureData == _CurPreview).MarkerUpdate();
     }
 
-    public void ShowPanel()
+    public override void ShowPanel()
     {
-        _canvas.enabled = true;
+        base.ShowPanel();
         SetRepuesterList();
         SetPhotoList();
     }
@@ -104,9 +100,8 @@ public class PhotoSetPanel : MonoBehaviour
                 }
             }
         }
-
         _checkPanel.gameObject.SetActive(false);
-        _canvas.enabled = false;
-        MainGameManager.Instance.ChangeNextState();
+        HidePanel();
+        DaySystem.Instance.ChangeState(false);
     }
 }

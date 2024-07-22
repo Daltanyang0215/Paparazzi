@@ -15,17 +15,10 @@ public class MainGameManager : MonoBehaviour
             return _instance;
         }
     }
-
-    [field: Header("MainState")]
-    [field: SerializeField] public MainGameState MainState { get; private set; }
-    public FSMStateBase FSMState { get; private set; }
-    [field: SerializeField] public int DayCount { get; private set; } = 0;
     [field: SerializeField] public bool IsCameraMove { get; set; }
-    public Action CameraChangeAction;
-
-    [field: SerializeField] public List<CaptureData> Captures { get; private set; } = new List<CaptureData>();
     private Camera _camera;
 
+    [field: SerializeField] public List<CaptureData> Captures { get; private set; } = new List<CaptureData>();
     [field: SerializeField] public byte MaxCaptureCount { get; private set; } = 5;
     public byte CurCaptureCount { get; private set; }
 
@@ -34,8 +27,8 @@ public class MainGameManager : MonoBehaviour
     public MapDataSo CurMapData { get; private set; }
     public ActorElement Target { get; private set; }
 
+    public Action CameraChangeAction;
     public Action CaptureAction;
-    public Action DayStartAction;
     public Action DayEndAction;
 
     public Dictionary<RequesterType, int> RequesterPoints { get; private set; }
@@ -53,66 +46,29 @@ public class MainGameManager : MonoBehaviour
             if (type == RequesterType.None) continue;
             RequesterPoints.Add(type, 50);
         }
-        // 로비 화면 없으니 넘어가
-        ChangeNextState();
+
+        // 로비 화면 없으니 넘어가, 나중에 수정해야 됨
+        DaySystem.Instance.ChangeState(DayState.Door, true);
     }
 
-    public void ChangeNextState()
+    public void ChangeState(bool isFade = false) => DaySystem.Instance.ChangeState(isFade);
+
+    public void RandomSelectMapData()
     {
-        MainState = MainState == MainGameState.Ending ? MainGameState.Door : MainState + 1;
-        Debug.Log($"Change State : {MainState}");
-
-        switch (MainState)
-        {
-            case MainGameState.Start:
-                break;
-            case MainGameState.Intro:
-                // 세이브 있으면 바로 넘김
-                ChangeNextState();
-                break;
-            case MainGameState.Door:
-                DayCount++;
-                CurMapData = _mapDataSos[UnityEngine.Random.Range(0, _mapDataSos.Count)]; 
-                MainUIManager.Instance.FadeEffect(false);
-                MainUIManager.Instance.DoorPanel.ShowPanel(true);
-                Target = CurMapData.TargetElement;
-
-                break;
-            case MainGameState.News:
-                MainUIManager.Instance.NewsPanel.SnowPanel(true);
-                MainUIManager.Instance.MemoPanel.SetMemoList(Target);
-                break;
-            case MainGameState.Capture:
-                MainUIManager.Instance.DoorPanel.ShowPanel(false);
-                MainUIManager.Instance.NewsPanel.SnowPanel(false);
-                MainUIManager.Instance.FadeEffect(false);
-                DailyStart();
-                break;
-            case MainGameState.Requester:
-                MainUIManager.Instance.PhotoSetPanel.ShowPanel();
-                break;
-            case MainGameState.Calculate:
-                MainUIManager.Instance.CalculatePanel.ShowPanel(true);
-                break;
-            case MainGameState.Ending:
-                MainUIManager.Instance.CalculatePanel.ShowPanel(false);
-                ChangeNextState();
-                break;
-        }
+        CurMapData = _mapDataSos[UnityEngine.Random.Range(0, _mapDataSos.Count)];
+        Target = CurMapData.TargetElement;
     }
-
 
     public void DailyStart()
     {
         CurCaptureCount = 0;
         Captures.Clear();
         MapManager.Instance.ActorInit(CurMapData);
-        DayStartAction?.Invoke();
     }
 
     public void CameraCapture(ActorElement element)
     {
-        if (MainState != MainGameState.Capture) return;
+        if (DaySystem.Instance.Current != DayState.Capture) return;
         if (CurCaptureCount >= MaxCaptureCount) return;
         CurCaptureCount++;
 
@@ -144,6 +100,7 @@ public class MainGameManager : MonoBehaviour
         DayEndAction?.Invoke();
     }
 
+    
 }
 
 [Serializable] // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
@@ -176,16 +133,4 @@ public enum RequesterType
 {
     None,
     Police,
-}
-
-public enum MainGameState
-{
-    Start,
-    Intro,
-    Door,
-    News,
-    Capture,
-    Requester,
-    Calculate,
-    Ending,
 }

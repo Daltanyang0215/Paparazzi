@@ -18,8 +18,6 @@ public class MapManager : MonoBehaviour
         _actorParent = transform.Find("Actors");
     }
 
-    //[Header("Test")]
-    //[SerializeField] private MapDataSo _testMapData;
     [ContextMenu("ActorInit")]
     public void ActorInit(MapDataSo mapdata)
     {

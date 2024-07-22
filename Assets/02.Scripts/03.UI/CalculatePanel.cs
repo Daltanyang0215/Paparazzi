@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CalculatePanel : MonoBehaviour
+public class CalculatePanel : UICanvasBase
 {
     [SerializeField] private Canvas _canvas;
 
@@ -21,10 +21,9 @@ public class CalculatePanel : MonoBehaviour
     [SerializeField] private int _addCoinValue;
     [SerializeField] private int _subCoinValue;
 
-    public void ShowPanel(bool show)
+    public override void ShowPanel()
     {
-        _canvas.enabled = show;
-        if (!show) return;
+        base.ShowPanel();
 
         int addPoint = 0;
         int addCoin = 0;

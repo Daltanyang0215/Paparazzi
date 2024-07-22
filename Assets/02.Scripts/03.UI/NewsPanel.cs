@@ -3,33 +3,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class NewsPanel : MonoBehaviour
+public class NewsPanel : UICanvasBase
 {
-    private Canvas _canvas;
     [SerializeField] private RectTransform _newsTransfrom;
 
     [SerializeField] private TMP_Text _newsText;
 
     [SerializeField] private GameObject _nextButton;
-    private void Start()
+
+
+    public override void ShowPanel()
     {
-        _canvas = GetComponent<Canvas>();
-    }
-
-
-    public void SnowPanel(bool show)
-    {
-        _canvas.enabled = show;
-
-        if (show)
-        {
-            StartCoroutine(NewsAnimation());
-        }
-    }
-
-    public void DialyStart()
-    {
-        MainUIManager.Instance.FadeEffect(true, () => MainGameManager.Instance.ChangeNextState());
+        base.ShowPanel();
+        StartCoroutine(NewsAnimation());
     }
 
     private IEnumerator NewsAnimation()
@@ -49,6 +35,6 @@ public class NewsPanel : MonoBehaviour
         }
         _newsTransfrom.anchoredPosition = Vector3.up * endPos;
         _nextButton.SetActive(true);
-        MainUIManager.Instance.MemoPanel.gameObject.SetActive(true);
+        MainUIManager.Instance.MemoPanel.ShowPanel();
     }
 }

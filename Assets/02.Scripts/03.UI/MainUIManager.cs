@@ -13,7 +13,7 @@ public class MainUIManager : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = GameObject.Find("MainUI").GetComponent<MainUIManager>();
+                _instance = GameObject.Find("GameManager").GetComponent<MainUIManager>();
             return _instance;
         }
     }
@@ -24,86 +24,36 @@ public class MainUIManager : MonoBehaviour
     [Header("CaptureCount")]
     [SerializeField] private TMP_Text _captureCountText;
     [Header("CaptureEffect")]
-    [SerializeField] private Image _effectImage;
-    [SerializeField] private AnimationCurve _effectColorCurve;
-    [SerializeField] private float _fadeTime = 0.5f;
-    [field: Header("TargetMemo")]
-    [field: SerializeField] public MemoPanel MemoPanel { get; private set; }
     [Header("NextDay")]
     [SerializeField] private Button _nextDay;
-    [field: SerializeField] public PhotoSetPanel PhotoSetPanel { get; private set; }
-    [field: SerializeField] public CalculatePanel CalculatePanel { get; private set; }
-    [Header("Fade")]
-    [SerializeField] private Image _fadeImage;
 
-
+    [field: Header("StatePanel")]
     [field: SerializeField] public DoorPanel DoorPanel { get; private set; }
     [field: SerializeField] public NewsPanel NewsPanel { get; private set; }
+    [field: SerializeField] public CapturePanel CapturePanel { get; private set; }
+    [field: SerializeField] public PhotoSetPanel PhotoSetPanel { get; private set; }
+    [field: SerializeField] public CalculatePanel CalculatePanel { get; private set; }
 
-
-    private void Start()
-    {
-        MainGameManager.Instance.CaptureAction += UpdateCaptureCountUI;
-        MainGameManager.Instance.CameraChangeAction += CameraAngleEnable;
-        MainGameManager.Instance.DayStartAction += CloseNextDayButton;
-        MainGameManager.Instance.DayStartAction += CameraAngleEnable;
-        MainGameManager.Instance.DayEndAction += ShowNextDayButton;
-        _effectImage.enabled = false;
-        _nextDay.gameObject.SetActive(false);
-
-        _fadeImage.color = Color.black;
-    }
+    [field: Header("SystemPanel")]
+    [field: SerializeField] public MemoPanel MemoPanel { get; private set; }
+    [SerializeField] private Image _fadeImage;
+    [SerializeField] private float _fadeTime = 0.5f;
+    private bool IsFading = false;
 
     private void Update()
     {
         if (!_isPlaying) return;
         _cameraAngle.position = Input.mousePosition;
     }
-
-    private void UpdateCaptureCountUI()
+    public void FadeEffect(Action fadeAfterAction = null)
     {
-        _captureCountText.text = $"{MainGameManager.Instance.MaxCaptureCount - MainGameManager.Instance.CurCaptureCount} / {MainGameManager.Instance.MaxCaptureCount}";
-        StopAllCoroutines();
-        StartCoroutine(CpatureEffect());
+        if (IsFading) return;
+        StartCoroutine(FadeInOutEffect(fadeAfterAction));
     }
 
-    private void CameraAngleEnable()
+    private IEnumerator FadeInOutEffect(Action fadeAfterAction)
     {
-        _cameraAngle.gameObject.SetActive(MainGameManager.Instance.IsCameraMove);
-    }
-
-    private IEnumerator CpatureEffect()
-    {
-        _effectImage.enabled = true;
-        float t = 0;
-        while (t < _fadeTime)
-        {
-            t += Time.deltaTime;
-            _effectImage.color = new Color(1, 1, 1, _effectColorCurve.Evaluate(t / _fadeTime));
-            yield return null;
-        }
-        _effectImage.enabled = false;
-    }
-
-    private void CloseNextDayButton()
-    {
-        _nextDay.gameObject.SetActive(false);
-    }
-    private void ShowNextDayButton()
-    {
-        _nextDay.gameObject.SetActive(true);
-    }
-
-    public void FadeEffect(bool fadeIn , Action fadeAfterAction = null)
-    {
-        if (fadeIn)
-            StartCoroutine(FadeInEffect(fadeAfterAction));
-        else
-            StartCoroutine(FadeOutEffect());
-    }
-
-    private IEnumerator FadeInEffect(Action fadeAfterAction)
-    {
+        IsFading = true;
         float t = 0;
         while (t < _fadeTime)
         {
@@ -111,16 +61,17 @@ public class MainUIManager : MonoBehaviour
             _fadeImage.color = new Color(0, 0, 0, (t / _fadeTime));
             yield return null;
         }
+        _fadeImage.color = Color.black;
         fadeAfterAction?.Invoke();
-    }
-    private IEnumerator FadeOutEffect()
-    {
-        float t = 0;
+
+        t = 0;
         while (t < _fadeTime)
         {
             t += Time.deltaTime;
             _fadeImage.color = new Color(0, 0, 0, 1 - (t / _fadeTime));
             yield return null;
         }
+        _fadeImage.color = Color.clear;
+        IsFading = false;
     }
 }
