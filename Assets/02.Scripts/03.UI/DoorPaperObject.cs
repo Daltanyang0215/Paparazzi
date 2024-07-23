@@ -8,6 +8,8 @@ public class DoorPaperObject : MonoBehaviour, IDragHandler
     private DoorPanel _doorCanvas;
     private RectTransform _rect;
     private bool _isCanDrag;
+
+    private float endPos;
     public bool IsAnimationFinish { get; private set; }
 
     private void Awake()
@@ -21,6 +23,7 @@ public class DoorPaperObject : MonoBehaviour, IDragHandler
     {
         _doorCanvas = doorCanvas;
         _rect.gameObject.SetActive(false);
+        endPos = _rect.anchoredPosition.y;
     }
 
     public void ShowAnimation()
@@ -32,7 +35,6 @@ public class DoorPaperObject : MonoBehaviour, IDragHandler
     private IEnumerator StartAnimation()
     {
         float startPos = 600;
-        float endPos = 100;
         float maxt = .5f;
         float t = 0;
         while (t < maxt)
@@ -59,7 +61,7 @@ public class DoorPaperObject : MonoBehaviour, IDragHandler
 
     private IEnumerator DragAnimation()
     {
-        float startPos = 100;
+        float startPos = this.endPos;
         float endPos = -1000;
         float maxt = .5f;
         float t = 0;

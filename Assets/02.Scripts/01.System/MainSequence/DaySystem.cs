@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 
@@ -21,18 +19,15 @@ public class DaySystem
     }
     #endregion
 
-    public MainGameManager Owner { get; private set; }
-
     #region Property
     [field: SerializeField] public int DayCount { get; private set; } = 0;
     [field: SerializeField] public bool IsCameraMove { get; set; }
-
     public void AddDayCount() => DayCount++;
-
     #endregion
 
     #region Compoments
     // 스테이트 전체 공유 컴포넌트 작성
+    public MainGameManager Owner { get; private set; }
 
     #endregion
 
@@ -60,6 +55,7 @@ public class DaySystem
         states.Add(DayState.Calculate, new FSMStateCalculate(this, MainUIManager.Instance.CalculatePanel));
         states.Add(DayState.Ending, new FSMStateEnding(this, null));
     }
+
     public void ChangeState(bool IsFade)
     {
         // 엔딩 페이지가 없으니 일단 정산이훌로 넘기기로. 엔딩에서도 엔딩 체크만 하고 넘길 예정
@@ -70,13 +66,12 @@ public class DaySystem
     {
         if (Current == newstate) return;
         if (states[newstate].canExecute == false) return;
-        Debug.Log($"Change : {newstate}");
+        
         if (IsFade)
         {
             MainUIManager.Instance.FadeEffect(() => ChangeState(newstate));
             return;
         }
-
         states[Current].OnStateExit();
         states[newstate].OnStateEnter();
 

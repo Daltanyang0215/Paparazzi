@@ -28,14 +28,15 @@ public class CalculatePanel : UICanvasBase
         int addPoint = 0;
         int addCoin = 0;
 
+        Dictionary<RequesterType, int> requsterAddPoint = new Dictionary<RequesterType, int>();
+        Dictionary<RequesterType, int> requsterAddCoin = new Dictionary<RequesterType, int>();
+
         ActorElement target = MainGameManager.Instance.Target;
 
         foreach (CaptureData capture in MainGameManager.Instance.Captures)
         {
             // 폐기는 점수 제외
             if (capture.RequesterType == RequesterType.None) continue;
-
-
 
             if ((target.ActorType == ActorType.None || target.ActorType == capture.CaptureElement.ActorType) &&
                 (target.ActorColor == ActorColor.None || target.ActorColor == capture.CaptureElement.ActorColor) &&

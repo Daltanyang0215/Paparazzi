@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class DoorPanel : UICanvasBase
@@ -10,11 +9,13 @@ public class DoorPanel : UICanvasBase
     [SerializeField] private TMP_Text _dayText;
     [SerializeField] private DoorPaperObject _doorObject;
     [SerializeField] private Image _doorEffect;
+    [SerializeField] private DoorPaperObject _subObject;
 
     protected override void Awake()
     {
         base.Awake();
         _doorObject.Init(this);
+        _subObject.Init(this);
         //TODO 디버그용, 나중에 지워야 됨
         canvas.enabled = true;
     }
@@ -31,7 +32,11 @@ public class DoorPanel : UICanvasBase
 
     public void CheckFinsh()
     {
-        if (!_doorObject.IsAnimationFinish) return;
+        if (!_subObject.IsAnimationFinish) // 서브오브젝트까지 애니메이션이 완료되었는지 확인
+        {
+            _subObject.ShowAnimation();
+            return;
+        }
         DaySystem.Instance.ChangeState(false);
     }
 

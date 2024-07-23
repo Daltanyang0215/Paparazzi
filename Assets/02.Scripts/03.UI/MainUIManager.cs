@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,15 +17,6 @@ public class MainUIManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool _isPlaying;
-    [Header("CameraAngle")]
-    [SerializeField] private Transform _cameraAngle;
-    [Header("CaptureCount")]
-    [SerializeField] private TMP_Text _captureCountText;
-    [Header("CaptureEffect")]
-    [Header("NextDay")]
-    [SerializeField] private Button _nextDay;
-
     [field: Header("StatePanel")]
     [field: SerializeField] public DoorPanel DoorPanel { get; private set; }
     [field: SerializeField] public NewsPanel NewsPanel { get; private set; }
@@ -40,11 +30,6 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private float _fadeTime = 0.5f;
     private bool IsFading = false;
 
-    private void Update()
-    {
-        if (!_isPlaying) return;
-        _cameraAngle.position = Input.mousePosition;
-    }
     public void FadeEffect(Action fadeAfterAction = null)
     {
         if (IsFading) return;

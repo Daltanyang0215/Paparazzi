@@ -14,6 +14,8 @@ public class RequesterElement : MonoBehaviour
         _toggle = GetComponentInChildren<Toggle>();
         _toggle.group = group;
         GetComponentInChildren<TMPro.TMP_Text>().text = _type.ToString();
+
+        transform.Find("Marker").GetComponent<Image>().sprite = type == RequesterType.None ? MainGameManager.Instance.NoneMarker : MainGameManager.Instance.Requester[type].RequsterMarker;
         
         _toggle.onValueChanged.AddListener((value) =>
         {

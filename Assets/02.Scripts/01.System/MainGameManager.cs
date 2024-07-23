@@ -18,6 +18,13 @@ public class MainGameManager : MonoBehaviour
     [field: SerializeField] public bool IsCameraMove { get; set; }
     private Camera _camera;
 
+    [field: Header("RequesterDatas")]
+    [field: SerializeField] public Sprite NoneMarker { get; private set; }
+    [SerializeField] private List<RequesterData> _requesterDatas;
+    public Dictionary<RequesterType, RequesterData> Requester { get; private set; }
+    public Dictionary<RequesterType, int> RequesterPoints { get; private set; }
+
+    [field: Header("IngameDatas")]
     [field: SerializeField] public List<CaptureData> Captures { get; private set; } = new List<CaptureData>();
     [field: SerializeField] public byte MaxCaptureCount { get; private set; } = 5;
     public byte CurCaptureCount { get; private set; }
@@ -31,7 +38,6 @@ public class MainGameManager : MonoBehaviour
     public Action CaptureAction;
     public Action DayEndAction;
 
-    public Dictionary<RequesterType, int> RequesterPoints { get; private set; }
 
     public int HasCoin = 50;
 
@@ -40,10 +46,12 @@ public class MainGameManager : MonoBehaviour
         _camera = Camera.main;
         CaptureAction += CheckDailyFinish;
 
+        Requester = new Dictionary<RequesterType, RequesterData>();
         RequesterPoints = new Dictionary<RequesterType, int>();
         foreach (RequesterType type in Enum.GetValues(typeof(RequesterType)))
         {
             if (type == RequesterType.None) continue;
+            Requester.Add(type, _requesterDatas[(int)type -1]);
             RequesterPoints.Add(type, 50);
         }
 
@@ -100,7 +108,7 @@ public class MainGameManager : MonoBehaviour
         DayEndAction?.Invoke();
     }
 
-    
+
 }
 
 [Serializable] // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
@@ -119,6 +127,9 @@ public class CaptureData
 
     // 발송지를 선택 했는지 확인하기 위한 용도
     public bool IsSetRequester { get; private set; } = false;
+
+    public Sprite GetRequsterMarcker => RequesterType == RequesterType.None ? MainGameManager.Instance.NoneMarker :
+        MainGameManager.Instance.Requester[RequesterType].RequsterMarker;
 
     public void SetRequesterType(int index) => SetRequesterType((RequesterType)index);
     public void SetRequesterType(RequesterType requesterType)

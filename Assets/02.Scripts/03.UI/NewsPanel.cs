@@ -11,6 +11,9 @@ public class NewsPanel : UICanvasBase
 
     [SerializeField] private GameObject _nextButton;
 
+    [SerializeField] private Transform _otherPaparParent;
+
+    [SerializeField] private LatterObject _testObject;
 
     public override void ShowPanel()
     {
@@ -33,6 +36,11 @@ public class NewsPanel : UICanvasBase
             _newsTransfrom.anchoredPosition = Vector3.up * Mathf.Lerp(startPos, endPos, 1 - (1 - t / maxt) * (1 - t / maxt));
             yield return null;
         }
+
+        _testObject.ShowAnimation();
+
+        yield return new WaitForSeconds(.75f);
+
         _newsTransfrom.anchoredPosition = Vector3.up * endPos;
         _nextButton.SetActive(true);
         MainUIManager.Instance.MemoPanel.ShowPanel();

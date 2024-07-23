@@ -13,6 +13,7 @@ public class PhotoSetPanel : UICanvasBase
     [Header("RequesterList")]
     [SerializeField] private Transform _requesterListParent;
     [SerializeField] private RequesterElement _requesterElement;
+    [SerializeField] private Toggle _allApplyToggle;
     private Dictionary<RequesterType, RequesterElement> _requesterList;
 
     [Header("Preview")]
@@ -42,12 +43,24 @@ public class PhotoSetPanel : UICanvasBase
     public void SetPreviewRequester(RequesterType requesterType)
     {
         if (_previewChaging) return;
-        _CurPreview.SetRequesterType(requesterType);
-        _photoElements.Find(x => x.CaptureData == _CurPreview).MarkerUpdate();
+        if (_allApplyToggle.isOn)
+        {
+            foreach (PhotoElement element in _photoElements)
+            {
+                element.CaptureData.SetRequesterType(requesterType);
+                element.MarkerUpdate();
+            }
+        }
+        else
+        {
+            _CurPreview.SetRequesterType(requesterType);
+            _photoElements.Find(x => x.CaptureData == _CurPreview).MarkerUpdate();
+        }
     }
 
     public override void ShowPanel()
     {
+        _allApplyToggle.isOn = false;
         base.ShowPanel();
         SetRepuesterList();
         SetPhotoList();
@@ -55,7 +68,7 @@ public class PhotoSetPanel : UICanvasBase
 
     public void SetPhotoList()
     {
-        for (int i = _photoElements.Count-1; i >= 0; i--)
+        for (int i = _photoElements.Count - 1; i >= 0; i--)
         {
             Destroy(_photoElements[i].gameObject);
         }

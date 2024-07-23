@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c71ca9ac55c0a40912707992aa828e, type: 3}
+  m_Name: Police
+  m_EditorClassIdentifier: 
+  <RequsterName>k__BackingField: Police
+  <RequsterMarker>k__BackingField: {fileID: 21300000, guid: 415a11970f7b8cf41bb28eb610cae01f, type: 3}
+  <RequsterColor>k__BackingField: {r: 0.4575472, g: 0.79439616, b: 1, a: 1}
+  <RequestTrust>k__BackingField: 5
+  <RequestReward>k__BackingField: 10
+  <RequestPenalty>k__BackingField: 5
