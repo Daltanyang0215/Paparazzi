@@ -7,10 +7,10 @@ public class FSMStateDoor : FSMStateBase
 
     public override void OnStateEnter()
     {
-        base.OnStateEnter();
         _machine.AddDayCount();
         MainGameManager.Instance.RandomSelectMapData();
         MainUIManager.Instance.MemoPanel.HidePanel();
+        base.OnStateEnter();
     }
     public override void OnStateExit()
     {

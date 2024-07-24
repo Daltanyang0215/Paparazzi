@@ -9,13 +9,13 @@ public class DoorPanel : UICanvasBase
     [SerializeField] private TMP_Text _dayText;
     [SerializeField] private DoorPaperObject _doorObject;
     [SerializeField] private Image _doorEffect;
-    [SerializeField] private DoorPaperObject _subObject;
+    [SerializeField] private Transform _otherObjectParent;
+    private DoorPaperObject _subObject;
 
     protected override void Awake()
     {
         base.Awake();
         _doorObject.Init(this);
-        _subObject.Init(this);
         //TODO 디버그용, 나중에 지워야 됨
         canvas.enabled = true;
     }
@@ -26,13 +26,29 @@ public class DoorPanel : UICanvasBase
         MainUIManager.Instance.MemoPanel.ShowPanel();
         _dayText.enabled = false;
 
+        if (_subObject != null)
+        {
+            Destroy(_subObject.gameObject);
+        }
+
+        if (!ReferenceEquals(MainGameManager.Instance.CurQuest, null))
+        {
+            _subObject = Instantiate(MainGameManager.Instance.CurQuest.DoorPaperObject, _otherObjectParent);
+            _subObject.Init(this);
+        }
+        else
+        {
+            _subObject = null;
+        }
+
         StartCoroutine(DayCountAnimation());
         StartCoroutine(KnockAnimation());
     }
 
     public void CheckFinsh()
     {
-        if (!_subObject.IsAnimationFinish) // 서브오브젝트까지 애니메이션이 완료되었는지 확인
+        // 서브오브젝트까지 애니메이션이 완료되었는지 확인
+        if (!ReferenceEquals(_subObject, null) && !_subObject.IsAnimationFinish)
         {
             _subObject.ShowAnimation();
             return;

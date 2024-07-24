@@ -23,6 +23,10 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] private List<RequesterData> _requesterDatas;
     public Dictionary<RequesterType, RequesterData> Requester { get; private set; }
     public Dictionary<RequesterType, int> RequesterPoints { get; private set; }
+    [field: Header("QuestDatas")]
+    [SerializeField] private List<QuestDataSO> _qeustDatas;
+    public QuestDataSO CurQuest { get; private set; }
+    public Dictionary<RequesterType, int> LastQuestID { get; private set; }
 
     [field: Header("IngameDatas")]
     [field: SerializeField] public List<CaptureData> Captures { get; private set; } = new List<CaptureData>();
@@ -51,7 +55,7 @@ public class MainGameManager : MonoBehaviour
         foreach (RequesterType type in Enum.GetValues(typeof(RequesterType)))
         {
             if (type == RequesterType.None) continue;
-            Requester.Add(type, _requesterDatas[(int)type -1]);
+            Requester.Add(type, _requesterDatas[(int)type - 1]);
             RequesterPoints.Add(type, 50);
         }
 
@@ -65,6 +69,15 @@ public class MainGameManager : MonoBehaviour
     {
         CurMapData = _mapDataSos[UnityEngine.Random.Range(0, _mapDataSos.Count)];
         Target = CurMapData.TargetElement;
+        CurQuest = null;
+        foreach (QuestDataSO quest in _qeustDatas)
+        {
+            if (quest.CheckCanStartQuest())
+            {
+                CurQuest = quest;
+                break;
+            }
+        }
     }
 
     public void DailyStart()
@@ -104,7 +117,7 @@ public class MainGameManager : MonoBehaviour
     private void CheckDailyFinish()
     {
         if (CurCaptureCount != MaxCaptureCount) return;
-        Debug.Log("Finish");
+        //Debug.Log("Finish");
         DayEndAction?.Invoke();
     }
 

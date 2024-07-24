@@ -53,7 +53,7 @@ public class DoorPaperObject : MonoBehaviour, IDragHandler
         if (eventData.delta.y < -3f)
         {
             _isCanDrag = false;
-            Debug.Log("Next");
+            //Debug.Log("Next");
             StartCoroutine(DragAnimation());
         }
 

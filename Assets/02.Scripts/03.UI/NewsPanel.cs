@@ -6,18 +6,15 @@ using UnityEngine;
 public class NewsPanel : UICanvasBase
 {
     [SerializeField] private RectTransform _newsTransfrom;
-
     [SerializeField] private TMP_Text _newsText;
-
     [SerializeField] private GameObject _nextButton;
-
     [SerializeField] private Transform _otherPaparParent;
-
-    [SerializeField] private LatterObject _testObject;
+    private LatterObject _latterObject;
 
     public override void ShowPanel()
     {
         base.ShowPanel();
+        if (_latterObject != null) Destroy(_latterObject.gameObject);
         StartCoroutine(NewsAnimation());
     }
 
@@ -37,7 +34,11 @@ public class NewsPanel : UICanvasBase
             yield return null;
         }
 
-        _testObject.ShowAnimation();
+        if (!ReferenceEquals(MainGameManager.Instance.CurQuest, null))
+        {
+            _latterObject = Instantiate(MainGameManager.Instance.CurQuest.LatterObject, _otherPaparParent);
+            _latterObject.ShowAnimation();
+        }
 
         yield return new WaitForSeconds(.75f);
 

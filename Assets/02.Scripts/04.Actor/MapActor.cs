@@ -45,7 +45,7 @@ public class MapActor : MonoBehaviour
     private void OnMouseDown()
     {
         if (!MainGameManager.Instance.IsCameraMove) return;
-        Debug.Log($"{gameObject.name} Poto");
+        //Debug.Log($"{gameObject.name} Poto");
         // 촬영중에 하이라이트가 나오지 않도록 잠시 껏다 킴
         _renderer.enabled = false;
 
