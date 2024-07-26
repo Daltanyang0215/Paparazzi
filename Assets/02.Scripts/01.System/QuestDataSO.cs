@@ -11,8 +11,10 @@ public class QuestDataSO : ScriptableObject
     [field: SerializeField] public int TrustCondition { get; private set; }
     [field: SerializeField] public DoorPaperObject DoorPaperObject { get; private set; }
     [field: SerializeField] public LatterObject LatterObject { get; private set; }
-
     [field: SerializeField] public ActorElement QuestTarget {  get; private set; }
+    [field : SerializeField] public MapDataSo QuestMap { get; private set; }
+
+    
 
     public bool CheckCanStartQuest()
     {

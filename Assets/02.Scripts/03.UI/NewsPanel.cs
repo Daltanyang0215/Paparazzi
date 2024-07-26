@@ -33,11 +33,14 @@ public class NewsPanel : UICanvasBase
             _newsTransfrom.anchoredPosition = Vector3.up * Mathf.Lerp(startPos, endPos, 1 - (1 - t / maxt) * (1 - t / maxt));
             yield return null;
         }
-
-        if (!ReferenceEquals(MainGameManager.Instance.CurQuest, null))
+        foreach (RequesterData data in MainGameManager.Instance.Requester.Values)
         {
-            _latterObject = Instantiate(MainGameManager.Instance.CurQuest.LatterObject, _otherPaparParent);
-            _latterObject.ShowAnimation();
+            RequesterEventData dayevent = data.GetEventData();
+            if (dayevent?.EventStartDay == DaySystem.Instance.DayCount)
+            {
+                _latterObject = Instantiate(dayevent.LatterObject, _otherPaparParent);
+                _latterObject.ShowAnimation();
+            }
         }
 
         yield return new WaitForSeconds(.75f);

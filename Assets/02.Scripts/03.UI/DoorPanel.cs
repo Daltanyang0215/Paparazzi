@@ -23,22 +23,22 @@ public class DoorPanel : UICanvasBase
     public override void ShowPanel()
     {
         base.ShowPanel();
-        MainUIManager.Instance.MemoPanel.ShowPanel();
         _dayText.enabled = false;
 
         if (_subObject != null)
         {
             Destroy(_subObject.gameObject);
+            _subObject = null;
         }
 
-        if (!ReferenceEquals(MainGameManager.Instance.CurQuest, null))
+        foreach (RequesterData data in MainGameManager.Instance.Requester.Values)
         {
-            _subObject = Instantiate(MainGameManager.Instance.CurQuest.DoorPaperObject, _otherObjectParent);
-            _subObject.Init(this);
-        }
-        else
-        {
-            _subObject = null;
+            RequesterEventData dayevent = data.GetEventData();
+            if(dayevent?.EventStartDay == DaySystem.Instance.DayCount)
+            {
+                _subObject = Instantiate(dayevent.DoorPaperObject, _otherObjectParent);
+                _subObject.Init(this);
+            }
         }
 
         StartCoroutine(DayCountAnimation());

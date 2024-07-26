@@ -15,6 +15,7 @@ public class PhotoElement : MonoBehaviour, IPointerClickHandler
         CaptureData = data;
 
         _photoImage.sprite = CaptureData.CaptureSprite;
+        _marker.color = CaptureData.IsSetRequester ? Color.white : Color.clear;
     }
 
     public void MarkerUpdate()

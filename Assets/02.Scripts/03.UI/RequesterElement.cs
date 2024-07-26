@@ -17,6 +17,7 @@ public class RequesterElement : MonoBehaviour
 
         transform.Find("Marker").GetComponent<Image>().sprite = type == RequesterType.None ? MainGameManager.Instance.NoneMarker : MainGameManager.Instance.Requester[type].RequsterMarker;
         
+        _toggle.onValueChanged.RemoveAllListeners();
         _toggle.onValueChanged.AddListener((value) =>
         {
             if (!value) return;

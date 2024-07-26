@@ -15,6 +15,9 @@ MonoBehaviour:
   <RequsterName>k__BackingField: Police
   <RequsterMarker>k__BackingField: {fileID: 21300000, guid: 415a11970f7b8cf41bb28eb610cae01f, type: 3}
   <RequsterColor>k__BackingField: {r: 0.4575472, g: 0.79439616, b: 1, a: 1}
-  <RequestTrust>k__BackingField: 5
+  <RequestInitTrust>k__BackingField: 50
+  <RequestMaxTrust>k__BackingField: 100
+  <RequestDaltaTrust>k__BackingField: 5
   <RequestReward>k__BackingField: 10
   <RequestPenalty>k__BackingField: 5
+  <EventDatas>k__BackingField: []

@@ -23,11 +23,14 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] private List<RequesterData> _requesterDatas;
     public Dictionary<RequesterType, RequesterData> Requester { get; private set; }
     public Dictionary<RequesterType, int> RequesterPoints { get; private set; }
+
+
     [field: Header("QuestDatas")]
     [SerializeField] private List<QuestDataSO> _qeustDatas;
     public QuestDataSO CurQuest { get; private set; }
     public Dictionary<RequesterType, int> LastQuestID { get; private set; }
 
+    
     [field: Header("IngameDatas")]
     [field: SerializeField] public List<CaptureData> Captures { get; private set; } = new List<CaptureData>();
     [field: SerializeField] public byte MaxCaptureCount { get; private set; } = 5;
@@ -36,7 +39,7 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] private List<MapDataSo> _mapDataSos;
     // TODO 나중에 데일리 데이터는 리스트로 하고 하다를 받아서 사용할거라 현재는 임시 방편
     public MapDataSo CurMapData { get; private set; }
-    public ActorElement Target { get; private set; }
+    public Dictionary<RequesterType, ActorElement> Targets { get; private set; }
 
     public Action CameraChangeAction;
     public Action CaptureAction;
@@ -51,6 +54,7 @@ public class MainGameManager : MonoBehaviour
         CaptureAction += CheckDailyFinish;
 
         Requester = new Dictionary<RequesterType, RequesterData>();
+        Targets = new Dictionary<RequesterType, ActorElement>();
         RequesterPoints = new Dictionary<RequesterType, int>();
         foreach (RequesterType type in Enum.GetValues(typeof(RequesterType)))
         {
@@ -68,15 +72,12 @@ public class MainGameManager : MonoBehaviour
     public void RandomSelectMapData()
     {
         CurMapData = _mapDataSos[UnityEngine.Random.Range(0, _mapDataSos.Count)];
-        Target = CurMapData.TargetElement;
-        CurQuest = null;
-        foreach (QuestDataSO quest in _qeustDatas)
+        Targets[RequesterType.Police] = CurMapData.TargetElement;
+
+        foreach (RequesterType type in Enum.GetValues(typeof(RequesterType)))
         {
-            if (quest.CheckCanStartQuest())
-            {
-                CurQuest = quest;
-                break;
-            }
+            if (type == RequesterType.None || type == RequesterType.Police) continue;
+            Targets[type] = Requester[type].GetEventData()?.EventTarget;
         }
     }
 
@@ -157,4 +158,7 @@ public enum RequesterType
 {
     None,
     Police,
+    Secret,
+    Agency,
+    Rebel
 }
