@@ -29,10 +29,10 @@ public class RequesterUIElement : MonoBehaviour
 
     public void AddValue(int addPoint)
     {
-        MainGameManager.Instance.RequesterPoints[_requester] += addPoint;
+        SaveSystem.Save.CurSave.RequesterPoints[_requester] += addPoint;
 
-        _trustSlider.value = MainGameManager.Instance.RequesterPoints[_requester] * 0.01f;
-        _trustValue.text = MainGameManager.Instance.RequesterPoints[_requester].ToString();
+        _trustSlider.value = SaveSystem.Save.CurSave.RequesterPoints[_requester] * 0.01f;
+        _trustValue.text = SaveSystem.Save.CurSave.RequesterPoints[_requester].ToString();
         _trustDaltaValue.text = (addPoint > 0 ? "+" : string.Empty) + addPoint.ToString();
     }
 

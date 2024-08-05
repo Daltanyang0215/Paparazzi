@@ -20,9 +20,8 @@ public class DaySystem
     #endregion
 
     #region Property
-    [field: SerializeField] public int DayCount { get; private set; } = 0;
     [field: SerializeField] public bool IsCameraMove { get; set; }
-    public void AddDayCount() => DayCount++;
+    public void AddDayCount() => SaveSystem.Save.CurSave.DayCount++;
     #endregion
 
     #region Compoments

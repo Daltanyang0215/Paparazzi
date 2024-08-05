@@ -100,8 +100,8 @@ public class PhotoSetPanel : UICanvasBase
             if (value == RequesterType.None || value == RequesterType.Police) continue;
 
             // 경찰 제외 첫 만남도 이벤트에 포함된 영역으로 이벤트가 없다면 만남도 없었다는 것
-            Debug.Log($"{value} / {MainGameManager.Instance.Requester[value].EventDatas[0].EventStartDay} / {DaySystem.Instance.DayCount}");
-            _requesterList[value].gameObject.SetActive(MainGameManager.Instance.Requester[value].EventDatas[0].EventStartDay <= DaySystem.Instance.DayCount);
+            Debug.Log($"{value} / {MainGameManager.Instance.Requester[value].EventDatas[0].EventStartDay} / {SaveSystem.Save.CurSave.DayCount}");
+            _requesterList[value].gameObject.SetActive(MainGameManager.Instance.Requester[value].EventDatas[0].EventStartDay <= SaveSystem.Save.CurSave.DayCount);
         }
         if (_requesterList.ContainsKey(RequesterType.None)) return;
         RequesterElement remove = Instantiate(_requesterElement, _requesterListParent);

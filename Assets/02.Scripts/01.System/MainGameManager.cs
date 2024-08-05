@@ -22,7 +22,6 @@ public class MainGameManager : MonoBehaviour
     [field: SerializeField] public Sprite NoneMarker { get; private set; }
     [SerializeField] private List<RequesterData> _requesterDatas;
     public Dictionary<RequesterType, RequesterData> Requester { get; private set; }
-    public Dictionary<RequesterType, int> RequesterPoints { get; private set; }
 
 
     [field: Header("QuestDatas")]
@@ -46,7 +45,6 @@ public class MainGameManager : MonoBehaviour
     public Action DayEndAction;
 
 
-    public int HasCoin = 50;
 
     private void Start()
     {
@@ -55,12 +53,10 @@ public class MainGameManager : MonoBehaviour
 
         Requester = new Dictionary<RequesterType, RequesterData>();
         Targets = new Dictionary<RequesterType, ActorElement>();
-        RequesterPoints = new Dictionary<RequesterType, int>();
         foreach (RequesterType type in Enum.GetValues(typeof(RequesterType)))
         {
             if (type == RequesterType.None) continue;
             Requester.Add(type, _requesterDatas[(int)type - 1]);
-            RequesterPoints.Add(type, 50);
         }
 
         // 로비 화면 없으니 넘어가, 나중에 수정해야 됨
@@ -122,7 +118,11 @@ public class MainGameManager : MonoBehaviour
         DayEndAction?.Invoke();
     }
 
-
+    [ContextMenu("DeleteSaveData")]
+    private void DeleteData()
+    {
+        SaveSystem.DeleteData();
+    }
 }
 
 [Serializable] // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨

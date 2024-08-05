@@ -68,8 +68,8 @@ public class CalculatePanel : UICanvasBase
         _subVlaue.Clear();
 
         // 고정 내용
-        _addElements[0].Init("기존 소지금", MainGameManager.Instance.HasCoin, false);
-        _addVlaue.Add(MainGameManager.Instance.HasCoin);
+        _addElements[0].Init("기존 소지금", SaveSystem.Save.CurSave.HasCoin, false);
+        _addVlaue.Add(SaveSystem.Save.CurSave.HasCoin);
         _subElements[0].Init("집세", 20, false);
         _subVlaue.Add(20);
 
@@ -146,7 +146,7 @@ public class CalculatePanel : UICanvasBase
 
     public override void HidePanel()
     {
-        MainGameManager.Instance.HasCoin = _totalVlaue;
+        SaveSystem.Save.CurSave.HasCoin = _totalVlaue;
         base.HidePanel();
     }
 

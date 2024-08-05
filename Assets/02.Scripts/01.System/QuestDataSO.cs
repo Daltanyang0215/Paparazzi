@@ -18,7 +18,7 @@ public class QuestDataSO : ScriptableObject
 
     public bool CheckCanStartQuest()
     {
-        return DaySystem.Instance.DayCount == DayCondition &&
-            MainGameManager.Instance.RequesterPoints[RequesterType] >= TrustCondition;
+        return SaveSystem.Save.CurSave.DayCount == DayCondition &&
+            SaveSystem.Save.CurSave.RequesterPoints[RequesterType] >= TrustCondition;
     }
 }

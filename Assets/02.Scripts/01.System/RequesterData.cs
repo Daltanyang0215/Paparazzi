@@ -31,7 +31,7 @@ public class RequesterData : ScriptableObject
         foreach (var data in EventDatas)
         {
             // 해당 날자가 이벤트 발생 시점 보다 전 이라면 종료
-            if (DaySystem.Instance.DayCount < data.EventStartDay) break;
+            if (SaveSystem.Save.CurSave.DayCount < data.EventStartDay) break;
 
             // 해당 날자가 이벤트 발생 시점 이거나 이후라면 데이터를 리턴
             result = data;

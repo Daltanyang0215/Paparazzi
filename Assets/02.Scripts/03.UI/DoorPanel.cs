@@ -34,7 +34,7 @@ public class DoorPanel : UICanvasBase
         foreach (RequesterData data in MainGameManager.Instance.Requester.Values)
         {
             RequesterEventData dayevent = data.GetEventData();
-            if(dayevent?.EventStartDay == DaySystem.Instance.DayCount)
+            if(dayevent?.EventStartDay == SaveSystem.Save.CurSave.DayCount)
             {
                 _subObject = Instantiate(dayevent.DoorPaperObject, _otherObjectParent);
                 _subObject.Init(this);
@@ -59,7 +59,7 @@ public class DoorPanel : UICanvasBase
     private IEnumerator DayCountAnimation()
     {
         yield return new WaitForSeconds(1);
-        _dayText.text = DaySystem.Instance.DayCount.ToString() + " 일차";
+        _dayText.text = SaveSystem.Save.CurSave.DayCount.ToString() + " 일차";
 
         float t = 0;
         float maxt = 1;

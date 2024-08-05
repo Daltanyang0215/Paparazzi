@@ -36,7 +36,7 @@ public class NewsPanel : UICanvasBase
         foreach (RequesterData data in MainGameManager.Instance.Requester.Values)
         {
             RequesterEventData dayevent = data.GetEventData();
-            if (dayevent?.EventStartDay == DaySystem.Instance.DayCount)
+            if (dayevent?.EventStartDay == SaveSystem.Save.CurSave.DayCount)
             {
                 _latterObject = Instantiate(dayevent.LatterObject, _otherPaparParent);
                 _latterObject.ShowAnimation();
