@@ -22,7 +22,7 @@ public class SaveSystem
             return _save;
         }
     }
-    static string path = Application.persistentDataPath + "/Saves.json";
+    static string path = Application.persistentDataPath + "/GlobalSaves.json";
     
 
 

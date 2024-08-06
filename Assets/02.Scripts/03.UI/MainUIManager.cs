@@ -18,6 +18,7 @@ public class MainUIManager : MonoBehaviour
     }
 
     [field: Header("StatePanel")]
+    [field: SerializeField] public StartTitlePanel StartTitlePanel {  get; private set; }
     [field: SerializeField] public DoorPanel DoorPanel { get; private set; }
     [field: SerializeField] public NewsPanel NewsPanel { get; private set; }
     [field: SerializeField] public CapturePanel CapturePanel { get; private set; }

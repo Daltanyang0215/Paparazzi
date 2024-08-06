@@ -58,8 +58,12 @@ public class MainGameManager : MonoBehaviour
             if (type == RequesterType.None) continue;
             Requester.Add(type, _requesterDatas[(int)type - 1]);
         }
+        DaySystem.Instance.states[DayState.Start].OnStateEnter();
+    }
 
-        // 로비 화면 없으니 넘어가, 나중에 수정해야 됨
+    public void StartGameToIndex(int index)
+    {
+        SaveSystem.Save.SetCurSaveIndex(index);
         DaySystem.Instance.ChangeState(DayState.Door, true);
     }
 
@@ -116,6 +120,11 @@ public class MainGameManager : MonoBehaviour
         if (CurCaptureCount != MaxCaptureCount) return;
         //Debug.Log("Finish");
         DayEndAction?.Invoke();
+    }
+
+    public void GameExit()
+    {
+        Application.Quit();
     }
 
     [ContextMenu("DeleteSaveData")]

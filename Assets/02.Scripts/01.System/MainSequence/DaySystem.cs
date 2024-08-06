@@ -45,7 +45,7 @@ public class DaySystem
         // 스테이트 종류 작성. 
         //states.Add(MainGameState.Start, new CreatureIdle(Owner.GetCreatureData, this));
 
-        states.Add(DayState.Start, new FSMStateStart(this, null));
+        states.Add(DayState.Start, new FSMStateStart(this, MainUIManager.Instance.StartTitlePanel));
         states.Add(DayState.Intro, new FSMStateIntro(this, null));
         states.Add(DayState.Door, new FSMStateDoor(this, MainUIManager.Instance.DoorPanel));
         states.Add(DayState.News, new FSMStateNews(this, MainUIManager.Instance.NewsPanel));

@@ -6,12 +6,13 @@ using UnityEngine;
 public class GlobalSaveData
 {
     public int LastSaveIndex;
+    
     public int CurSaveIndex = -1;
-    public SaveData[] SaveDatas;
+    public List<SaveData> SaveDatas;
     public SaveData CurSave => CurSaveIndex == -1 ? null : SaveDatas[CurSaveIndex];
     public GlobalSaveData()
     {
-        SaveDatas = new SaveData[3];
+        SaveDatas = new List<SaveData>() {null,null,null };
     }
     public void Save()
     {
@@ -29,28 +30,27 @@ public class GlobalSaveData
         CurSaveIndex = index;
     }
 }
-
+[System.Serializable]
 public class SaveData
 {
-    public DateTime LastTime;
+    public string LastTimeToString;
     public int DayCount;
-    public Dictionary<RequesterType, int> RequesterPoints;
+    public List<int> RequesterPoints;
     public int HasCoin;
 
     public SaveData()
     {
-        LastTime = DateTime.Now;
         DayCount = 0;
         HasCoin = 50;
-        RequesterPoints = new Dictionary<RequesterType, int>();
-        foreach (RequesterType type in Enum.GetValues(typeof(RequesterType)))
+        RequesterPoints = new List<int>();
+        for (int i = 0; i < Enum.GetValues(typeof(RequesterType)).Length; i++)
         {
-            RequesterPoints.Add(type, 0);
+            RequesterPoints.Add(0);
         }
     }
 
     public void Save()
     {
-        LastTime = DateTime.Now;
+        LastTimeToString = DateTime.Now.ToString();
     }
 }

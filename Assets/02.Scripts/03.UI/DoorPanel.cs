@@ -16,8 +16,6 @@ public class DoorPanel : UICanvasBase
     {
         base.Awake();
         _doorObject.Init(this);
-        //TODO 디버그용, 나중에 지워야 됨
-        canvas.enabled = true;
     }
 
     public override void ShowPanel()
