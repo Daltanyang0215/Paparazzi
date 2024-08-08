@@ -26,9 +26,10 @@ public class MapManager : MonoBehaviour
             Destroy(_actorParent.GetChild(i).gameObject);
         }
 
-        foreach (ActorData actorData in mapdata.Actordata)
+        for (int i = 0; i < mapdata.Actordata.Count; i++)
         {
-            Instantiate(_mapActorPrefab, actorData.Position, Quaternion.identity, _actorParent).SetData(actorData);
+            ActorData actorData = mapdata.Actordata[i];
+            Instantiate(_mapActorPrefab, actorData.Position, Quaternion.identity, _actorParent).SetData(actorData,i);
         }
     }
 #if UNITY_EDITOR

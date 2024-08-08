@@ -13,6 +13,14 @@ public class SaveSlot : MonoBehaviour
     {
         int slotindex = index;
         GetComponent<Button>().onClick.AddListener(() => MainGameManager.Instance.StartGameToIndex(slotindex));
+        transform.GetChild(1).GetComponentInChildren<Button>().onClick.AddListener(() =>
+        {
+            SaveSystem.Save.SaveDatas[slotindex] = null;
+            SaveSystem.SaveData();
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(false);
+
+        });
 
         if (SaveSystem.Save.SaveDatas[index] == null || SaveSystem.Save.SaveDatas[index].DayCount <= 0)
         {

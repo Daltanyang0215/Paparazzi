@@ -16,7 +16,7 @@ public class GlobalSaveData
     }
     public void Save()
     {
-        CurSave.Save();
+        CurSave?.Save();
         LastSaveIndex = CurSaveIndex;
     }
 

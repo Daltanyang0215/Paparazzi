@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class MapActor : MonoBehaviour
 {
+    // 사진 중복 확인용 액터 아이디. 고유값의 의미는 없음
+    [SerializeField] public int ActorID { get; private set; }
     [field: SerializeField] public ActorData ActorData { get; private set; }
     private SpriteRenderer _renderer;
 
-    public void SetData(ActorData data)
+        public void SetData(ActorData data, int id)
     {
         ActorData = data;
+        ActorID = id;
         OnValidate();
     }
 
@@ -50,7 +53,7 @@ public class MapActor : MonoBehaviour
         _renderer.enabled = false;
 
         Camera.main.transform.position = transform.position + Vector3.back * 5;
-        MainGameManager.Instance.CameraCapture(ActorData.ActorElement);
+        MainGameManager.Instance.CameraCapture(ActorData.ActorElement, ActorID);
 
         _renderer.enabled = true;
     }

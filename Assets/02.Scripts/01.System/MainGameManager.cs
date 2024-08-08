@@ -88,7 +88,7 @@ public class MainGameManager : MonoBehaviour
         MapManager.Instance.ActorInit(CurMapData);
     }
 
-    public void CameraCapture(ActorElement element)
+    public void CameraCapture(ActorElement element, int actorID)
     {
         if (DaySystem.Instance.Current != DayState.Capture) return;
         if (CurCaptureCount >= MaxCaptureCount) return;
@@ -110,7 +110,7 @@ public class MainGameManager : MonoBehaviour
         Destroy(render);
 
         Sprite sprite = Sprite.Create(texture, rect, Vector2.zero);
-        Captures.Add(new CaptureData(sprite, element));
+        Captures.Add(new CaptureData(sprite, element, actorID));
 
         CaptureAction?.Invoke();
     }
@@ -137,16 +137,20 @@ public class MainGameManager : MonoBehaviour
 [Serializable] // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
 public class CaptureData
 {
-    public CaptureData(Sprite captureSprite, ActorElement captureElement)
+    public CaptureData(Sprite captureSprite, ActorElement captureElement, int actorID)
     {
         CaptureSprite = captureSprite;
         CaptureElement = captureElement;
+        ActorID = actorID;  
     }
 
     // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
     [field: SerializeField] public Sprite CaptureSprite { get; private set; }
+    [field: SerializeField] public int ActorID { get; private set; }
     [field: SerializeField] public ActorElement CaptureElement { get; private set; }
     [field: SerializeField] public RequesterType RequesterType { get; private set; }
+
+    
 
     // 발송지를 선택 했는지 확인하기 위한 용도
     public bool IsSetRequester { get; private set; } = false;

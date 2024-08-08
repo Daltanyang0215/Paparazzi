@@ -8,11 +8,13 @@ public class PhotoSetPanel : UICanvasBase
     [Header("PhotoList")]
     [SerializeField] private Transform _photoListParent;
     [SerializeField] private PhotoElement _photoElement;
+    [SerializeField] private ToggleGroup _photoToggleGroup;
     private List<PhotoElement> _photoElements;
 
     [Header("RequesterList")]
     [SerializeField] private Transform _requesterListParent;
     [SerializeField] private RequesterElement _requesterElement;
+    [SerializeField]private ToggleGroup _requesterToggleGroup;
     [SerializeField] private Toggle _allApplyToggle;
     private Dictionary<RequesterType, RequesterElement> _requesterList;
 
@@ -21,12 +23,10 @@ public class PhotoSetPanel : UICanvasBase
     [SerializeField] private Transform _checkPanel;
 
     private CaptureData _CurPreview;
-    private ToggleGroup _toggleGroup;
     private bool _previewChaging;
 
     private void Start()
     {
-        _toggleGroup = GetComponent<ToggleGroup>();
         _photoElements = new List<PhotoElement>();
         _requesterList = new Dictionary<RequesterType, RequesterElement>();
     }
@@ -77,9 +77,10 @@ public class PhotoSetPanel : UICanvasBase
         foreach (CaptureData capture in MainGameManager.Instance.Captures)
         {
             PhotoElement add = Instantiate(_photoElement, _photoListParent);
-            add.Init(capture);
+            add.Init(capture,_photoToggleGroup);
             _photoElements.Add(add);
         }
+        _photoElements[0].toggle.isOn = true;
         SetPreview(MainGameManager.Instance.Captures[0]);
     }
 
@@ -91,7 +92,7 @@ public class PhotoSetPanel : UICanvasBase
             if (value == RequesterType.None) continue;
             if (_requesterList.ContainsKey(value)) continue;
             RequesterElement add = Instantiate(_requesterElement, _requesterListParent);
-            add.Init(value, _toggleGroup);
+            add.Init(value, _requesterToggleGroup);
             _requesterList.Add(value, add);
         }
         // 토글 활성화
@@ -105,7 +106,7 @@ public class PhotoSetPanel : UICanvasBase
         }
         if (_requesterList.ContainsKey(RequesterType.None)) return;
         RequesterElement remove = Instantiate(_requesterElement, _requesterListParent);
-        remove.Init(RequesterType.None, _toggleGroup);
+        remove.Init(RequesterType.None, _requesterToggleGroup);
         remove.ChangeToggleValue(true);
         _requesterList.Add(RequesterType.None, remove);
     }

@@ -72,6 +72,7 @@ public class CalculatePanel : UICanvasBase
         _addVlaue.Add(SaveSystem.Save.CurSave.HasCoin);
         _subElements[0].Init("집세", 20, false);
         _subVlaue.Add(20);
+        // 고정 내용
 
         Dictionary<RequesterType, int> requsterAddPoint = new Dictionary<RequesterType, int>();
         Dictionary<RequesterType, int> requsterAddCoin = new Dictionary<RequesterType, int>();
@@ -82,8 +83,18 @@ public class CalculatePanel : UICanvasBase
             requsterAddCoin.Add(type, 0);
         }
 
-        foreach (CaptureData capture in MainGameManager.Instance.Captures)
+        for (int i = 0; i < MainGameManager.Instance.Captures.Count; i++)
         {
+            CaptureData capture = MainGameManager.Instance.Captures[i];
+
+            // 중복검사 TODO 일단 단일 사진으로써 동일한 사진이 여러장 있다면 검사 자체를 스킵.
+            bool ifEuqles = false;
+            for (int j = 0; j < i; j++) { 
+                if(capture.ActorID == MainGameManager.Instance.Captures[j].ActorID)
+                    ifEuqles = true;
+            }
+            if (ifEuqles) continue;
+
             // 폐기는 점수 제외
             if (capture.RequesterType == RequesterType.None) continue;
             ActorElement target = MainGameManager.Instance.Targets[capture.RequesterType];

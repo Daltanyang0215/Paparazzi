@@ -8,14 +8,16 @@ public class PhotoElement : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image _photoImage;
     [SerializeField] private Image _marker;
-
+    public Toggle toggle { get; private set; }
     public CaptureData CaptureData { get; private set; }
-    public void Init(CaptureData data)
+    public void Init(CaptureData data, ToggleGroup group)
     {
         CaptureData = data;
 
         _photoImage.sprite = CaptureData.CaptureSprite;
         _marker.color = CaptureData.IsSetRequester ? Color.white : Color.clear;
+        toggle = GetComponent<Toggle>();
+        toggle.group = group;
     }
 
     public void MarkerUpdate()

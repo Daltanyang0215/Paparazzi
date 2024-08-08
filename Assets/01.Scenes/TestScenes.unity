@@ -2440,7 +2440,6 @@ GameObject:
   - component: {fileID: 285773022}
   - component: {fileID: 285773021}
   - component: {fileID: 285773025}
-  - component: {fileID: 285773026}
   m_Layer: 5
   m_Name: PhotoSetCanvas
   m_TagString: Untagged
@@ -2546,24 +2545,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _photoListParent: {fileID: 823281279}
   _photoElement: {fileID: 4105571229545082821, guid: 34f502f9a0c70a447a93b0af4545576f, type: 3}
+  _photoToggleGroup: {fileID: 1674726137}
   _requesterListParent: {fileID: 376701168}
   _requesterElement: {fileID: 2939465827201311095, guid: 8e96a667972f56e4d897be7f1fbb8219, type: 3}
+  _requesterToggleGroup: {fileID: 791005033}
   _allApplyToggle: {fileID: 475210793}
   _photoPreview: {fileID: 481996166}
   _checkPanel: {fileID: 269352491}
---- !u!114 &285773026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285773020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
 --- !u!1 &293713460
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,6 +5460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 791005032}
+  - component: {fileID: 791005033}
   m_Layer: 5
   m_Name: RequesterList
   m_TagString: Untagged
@@ -5502,6 +5491,19 @@ RectTransform:
   m_AnchoredPosition: {x: 685, y: -10}
   m_SizeDelta: {x: -1470, y: -540}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &791005033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791005031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!1 &805469711
 GameObject:
   m_ObjectHideFlags: 0
@@ -9009,6 +9011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1674726136}
+  - component: {fileID: 1674726137}
   m_Layer: 5
   m_Name: PhotoList
   m_TagString: Untagged
@@ -9038,6 +9041,19 @@ RectTransform:
   m_AnchoredPosition: {x: -250, y: 400}
   m_SizeDelta: {x: -500, y: -800}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1674726137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674726135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!1 &1685943873
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class StartTitlePanel : UICanvasBase
         for (int i = 0; i < 3; i++)
         {
             Instantiate(_slotPrefab, _slotParant).SetSlot(i);
-            if (SaveSystem.Save.SaveDatas[i] != null) _continueButton.interactable = true;
+            if (SaveSystem.Save.SaveDatas[i] != null && SaveSystem.Save.SaveDatas[i].DayCount > 0) _continueButton.interactable = true;
         }
         _slotParant.gameObject.SetActive(false);
     }
