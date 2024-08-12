@@ -29,7 +29,7 @@ public class MainGameManager : MonoBehaviour
     public QuestDataSO CurQuest { get; private set; }
     public Dictionary<RequesterType, int> LastQuestID { get; private set; }
 
-    
+
     [field: Header("IngameDatas")]
     [field: SerializeField] public List<CaptureData> Captures { get; private set; } = new List<CaptureData>();
     [field: SerializeField] public byte MaxCaptureCount { get; private set; } = 5;
@@ -88,15 +88,15 @@ public class MainGameManager : MonoBehaviour
         MapManager.Instance.ActorInit(CurMapData);
     }
 
-    public void CameraCapture(ActorElement element, int actorID)
+    public void CameraCapture(Vector2 mousePos)
     {
         if (DaySystem.Instance.Current != DayState.Capture) return;
         if (CurCaptureCount >= MaxCaptureCount) return;
         CurCaptureCount++;
 
-        RenderTexture render = new RenderTexture(512, 512, 24);
-        Rect rect = new Rect(0, 0, 512, 512);
-        Texture2D texture = new Texture2D(512, 512, TextureFormat.RGBA32, false);
+        RenderTexture render = new RenderTexture(Screen.width, Screen.height, 24);
+        Rect rect = new Rect(0, 0, Screen.width, Screen.height);
+        Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGBA32, false);
 
         _camera.targetTexture = render;
         _camera.Render();
@@ -109,8 +109,28 @@ public class MainGameManager : MonoBehaviour
         RenderTexture.active = null;
         Destroy(render);
 
-        Sprite sprite = Sprite.Create(texture, rect, Vector2.zero);
-        Captures.Add(new CaptureData(sprite, element, actorID));
+        Sprite sprite = Sprite.Create(texture, new Rect(Mathf.RoundToInt(mousePos.x) - 360,
+                                                        Mathf.RoundToInt(mousePos.y) - 240,
+                                                        720,
+                                                        480), Vector2.zero);
+
+        List<MapActor> mapActors = new List<MapActor>();
+
+        Vector2 posLB = Camera.main.ScreenToWorldPoint(mousePos - rect.size * .5f);
+        Vector2 posRT = Camera.main.ScreenToWorldPoint(mousePos + rect.size * .5f);
+
+        foreach (MapActor mapActor in MapManager.Instance.Actors)
+        {
+            if (mapActor.transform.position.x > posLB.x &&
+                mapActor.transform.position.x < posRT.x &&
+                mapActor.transform.position.y > posLB.y &&
+                mapActor.transform.position.y < posRT.y)
+            {
+                mapActors.Add(mapActor);
+            }
+        }
+
+        Captures.Add(new CaptureData(sprite, mapActors));
 
         CaptureAction?.Invoke();
     }
@@ -137,20 +157,18 @@ public class MainGameManager : MonoBehaviour
 [Serializable] // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
 public class CaptureData
 {
-    public CaptureData(Sprite captureSprite, ActorElement captureElement, int actorID)
+    public CaptureData(Sprite captureSprite, List<MapActor> captureActor)
     {
         CaptureSprite = captureSprite;
-        CaptureElement = captureElement;
-        ActorID = actorID;  
+        CaptureActors = captureActor;
     }
 
     // TODO 디버깅 용 , 나중에 시리얼라이즈 지워야 됨
     [field: SerializeField] public Sprite CaptureSprite { get; private set; }
-    [field: SerializeField] public int ActorID { get; private set; }
-    [field: SerializeField] public ActorElement CaptureElement { get; private set; }
+    [field: SerializeField] public List<MapActor> CaptureActors { get; private set; }
     [field: SerializeField] public RequesterType RequesterType { get; private set; }
 
-    
+
 
     // 발송지를 선택 했는지 확인하기 위한 용도
     public bool IsSetRequester { get; private set; } = false;

@@ -58,16 +58,7 @@ public class PlayerCameraMovement : MonoBehaviour
         }
         if (!MainGameManager.Instance.IsCameraMove) return;
 
-        // 마우스 조작
-        //if (Input.GetMouseButton(0))
-        //{
-        //    if (Input.GetMouseButtonDown(0))
-        //    {
-        //        _inputMousebefo = Input.mousePosition;
-        //    }
-        //    _inputVec = (_inputMousebefo - Input.mousePosition) * .68f;
-        //    _inputMousebefo = Input.mousePosition;
-        //}
+  
         // 키보드 조작
         else
         {

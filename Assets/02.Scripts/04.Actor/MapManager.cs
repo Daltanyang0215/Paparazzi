@@ -10,26 +10,30 @@ public class MapManager : MonoBehaviour
     #endregion
 
     [SerializeField] private MapActor _mapActorPrefab;
-
+    public List<MapActor> Actors { get; private set; }
     private Transform _actorParent;
 
     private void Start()
     {
         _actorParent = transform.Find("Actors");
+        Actors = new List<MapActor>();
     }
 
     [ContextMenu("ActorInit")]
     public void ActorInit(MapDataSo mapdata)
     {
-        for (int i = _actorParent.childCount - 1; i >= 0; i--)
+        foreach (MapActor actor in Actors)
         {
-            Destroy(_actorParent.GetChild(i).gameObject);
+            Destroy(actor.gameObject);
         }
+        Actors.Clear();
 
         for (int i = 0; i < mapdata.Actordata.Count; i++)
         {
             ActorData actorData = mapdata.Actordata[i];
-            Instantiate(_mapActorPrefab, actorData.Position, Quaternion.identity, _actorParent).SetData(actorData,i);
+            MapActor addActor = Instantiate(_mapActorPrefab, actorData.Position, Quaternion.identity, _actorParent);
+            addActor.SetData(actorData, i);
+            Actors.Add(addActor);
         }
     }
 #if UNITY_EDITOR

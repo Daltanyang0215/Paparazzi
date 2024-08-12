@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,14 +26,40 @@ public class CapturePanel : UICanvasBase
         _effectImage.enabled = false;
         _nextDay.gameObject.SetActive(false);
         MainGameManager.Instance.CaptureAction += UpdateCaptureCountUI;
-        MainGameManager.Instance.CameraChangeAction += CameraAngleEnable;
+        //MainGameManager.Instance.CameraChangeAction += CameraAngleEnable;
         MainGameManager.Instance.DayEndAction += ShowNextDayButton;
     }
 
     private void Update()
     {
-        if(!canvas.enabled) return;
-        _cameraAngle.position = Input.mousePosition;
+        if (!canvas.enabled) return;
+
+        Vector2 mousePos = Input.mousePosition;
+        mousePos.x = Mathf.Clamp(mousePos.x, 360, Screen.width - 360);
+        mousePos.y = Mathf.Clamp(mousePos.y, 240, Screen.height - 240);
+        _cameraAngle.position = mousePos;
+
+
+
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            CameraAngleEnable(true);
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            CameraAngleEnable(false);
+        }
+        else if (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0))
+        {
+            // 대상을 체크하는 방법을 추가해줘야 하나?
+
+            //Vector3 cameraPos = Camera.main.ScreenToWorldPoint(mousePos);
+            //cameraPos.z = -5;
+            //Camera.main.transform.position = cameraPos;
+            MainGameManager.Instance.CameraCapture(mousePos);
+        }
+
     }
 
     public override void ShowPanel()
@@ -41,7 +68,7 @@ public class CapturePanel : UICanvasBase
         _nextDay.gameObject.SetActive(false);
 
         _captureCountText.text = $"{MainGameManager.Instance.MaxCaptureCount} /  {MainGameManager.Instance.MaxCaptureCount}";
-        CameraAngleEnable();
+        CameraAngleEnable(false);
     }
 
     public override void HidePanel()
@@ -56,10 +83,11 @@ public class CapturePanel : UICanvasBase
         StartCoroutine(CpatureEffect());
     }
 
-    private void CameraAngleEnable()
+    private void CameraAngleEnable(bool isEnable)
     {
-        _cameraAngle.gameObject.SetActive(MainGameManager.Instance.IsCameraMove);
+        _cameraAngle.gameObject.SetActive(isEnable);
     }
+
     private void ShowNextDayButton()
     {
         _nextDay.gameObject.SetActive(true);

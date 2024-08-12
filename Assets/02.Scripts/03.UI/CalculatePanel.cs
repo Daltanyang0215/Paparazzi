@@ -87,26 +87,45 @@ public class CalculatePanel : UICanvasBase
         {
             CaptureData capture = MainGameManager.Instance.Captures[i];
 
-            // 중복검사 TODO 일단 단일 사진으로써 동일한 사진이 여러장 있다면 검사 자체를 스킵.
-            bool ifEuqles = false;
-            for (int j = 0; j < i; j++) { 
-                if(capture.ActorID == MainGameManager.Instance.Captures[j].ActorID)
-                    ifEuqles = true;
-            }
-            if (ifEuqles) continue;
-
             // 폐기는 점수 제외
             if (capture.RequesterType == RequesterType.None) continue;
             ActorElement target = MainGameManager.Instance.Targets[capture.RequesterType];
 
-            if ((target.ActorType == ActorType.None || target.ActorType == capture.CaptureElement.ActorType) &&
-                (target.ActorColor == ActorColor.None || target.ActorColor == capture.CaptureElement.ActorColor) &&
-                (target.ActorPart == ActorPart.None || target.ActorPart == capture.CaptureElement.ActorPart))
+            // 타겟 검수용. 사진에 타겟이 아무도 없다면 감점을 받로록 (중복만 있어도 감점)
+            bool isNotTarget = true;
+
+            for (int k = 0; k < capture.CaptureActors.Count; k++)
             {
-                requsterAddPoint[capture.RequesterType] += MainGameManager.Instance.Requester[capture.RequesterType].RequestDaltaTrust;
-                requsterAddCoin[capture.RequesterType] += MainGameManager.Instance.Requester[capture.RequesterType].RequestReward;
+                // 중복검사
+                bool ifEuqles = false;
+                for (int j = 0; j < i; j++)
+                {
+                    // 이전 사진 정보
+                    CaptureData befoCapture = MainGameManager.Instance.Captures[j];
+                    // 이전 사진의 의뢰인이 동일하지 않다면 다른 사진을 검사
+                    if (befoCapture.RequesterType != capture.RequesterType) continue;
+
+                    // 이전 사진의 의뢰인이 동일하면서 이전에 찍힌 사람이라면 중복확인에 true
+                    foreach (MapActor checkActor in befoCapture.CaptureActors)
+                    {
+                        if (capture.CaptureActors[k].ActorID == checkActor.ActorID)
+                            ifEuqles = true;
+                    }
+                }
+                if (ifEuqles) continue;
+                // 중복 검사 종료
+
+                ActorElement element = capture.CaptureActors[k].ActorData.ActorElement;
+                if ((target.ActorType == ActorType.None || target.ActorType == element.ActorType) &&
+                    (target.ActorColor == ActorColor.None || target.ActorColor == element.ActorColor) &&
+                    (target.ActorPart == ActorPart.None || target.ActorPart == element.ActorPart))
+                {
+                    requsterAddPoint[capture.RequesterType] += MainGameManager.Instance.Requester[capture.RequesterType].RequestDaltaTrust;
+                    requsterAddCoin[capture.RequesterType] += MainGameManager.Instance.Requester[capture.RequesterType].RequestReward;
+                    isNotTarget = false;
+                }
             }
-            else
+            if (isNotTarget)
             {
                 requsterAddPoint[capture.RequesterType] -= MainGameManager.Instance.Requester[capture.RequesterType].RequestDaltaTrust;
             }
@@ -151,7 +170,7 @@ public class CalculatePanel : UICanvasBase
             //    }
             //}
         }
-        
+
         UpdateMoneyCalculate();
     }
 
