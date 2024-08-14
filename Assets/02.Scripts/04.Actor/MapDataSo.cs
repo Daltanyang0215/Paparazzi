@@ -29,6 +29,7 @@ public class MapDataSo : ScriptableObject
         foreach (var actorData in mapActors)
         {
             saveData.Actordata.Add(new ActorData(actorData.transform.position,
+                                                 actorData.ActorData.MoveVec,
                                                  actorData.ActorData.IsFlip,
                                                  actorData.ActorData.IdleSprite,
                                                  actorData.ActorData.HightLightSprite,

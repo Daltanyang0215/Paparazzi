@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -92,7 +91,6 @@ public class CapturePanel : UICanvasBase
     {
         _nextDay.gameObject.SetActive(true);
     }
-
 
     private IEnumerator CpatureEffect()
     {

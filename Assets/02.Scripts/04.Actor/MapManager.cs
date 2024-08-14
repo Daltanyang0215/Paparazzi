@@ -19,14 +19,9 @@ public class MapManager : MonoBehaviour
         Actors = new List<MapActor>();
     }
 
-    [ContextMenu("ActorInit")]
     public void ActorInit(MapDataSo mapdata)
     {
-        foreach (MapActor actor in Actors)
-        {
-            Destroy(actor.gameObject);
-        }
-        Actors.Clear();
+        ActorClear();
 
         for (int i = 0; i < mapdata.Actordata.Count; i++)
         {
@@ -36,7 +31,36 @@ public class MapManager : MonoBehaviour
             Actors.Add(addActor);
         }
     }
+    private void ActorClear()
+    {
+        foreach (MapActor actor in Actors)
+        {
+            Destroy(actor.gameObject);
+        }
+        Actors.Clear();
+    }
+
 #if UNITY_EDITOR
+
+    [Header("Edior Develop")]
+    [SerializeField] private MapDataSo testMapData;
+
+    [ContextMenu("TestMapInit")]
+    public void TestMapInit()
+    {
+        Actors = new List<MapActor>();
+        _actorParent = transform.Find("Actors");
+        ActorInit(testMapData);
+    }
+    [ContextMenu("ActorClear")]
+    private void TestActorClear()
+    {
+        _actorParent = transform.Find("Actors");
+        while (_actorParent.childCount > 0)
+        {
+            DestroyImmediate(_actorParent.GetChild(0).gameObject);
+        }
+    }
 
     #region ExportActorData
     [Header("ExportActorData")]

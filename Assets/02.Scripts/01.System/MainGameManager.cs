@@ -44,8 +44,6 @@ public class MainGameManager : MonoBehaviour
     public Action CaptureAction;
     public Action DayEndAction;
 
-
-
     private void Start()
     {
         _camera = Camera.main;
@@ -95,29 +93,30 @@ public class MainGameManager : MonoBehaviour
         CurCaptureCount++;
 
         RenderTexture render = new RenderTexture(Screen.width, Screen.height, 24);
-        Rect rect = new Rect(0, 0, Screen.width, Screen.height);
+        Rect screenRect = new Rect(0, 0, Screen.width, Screen.height);
+        Rect angleRect = new Rect(0, 0, 720, 480);
         Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGBA32, false);
 
         _camera.targetTexture = render;
         _camera.Render();
 
         RenderTexture.active = render;
-        texture.ReadPixels(rect, 0, 0);
+        texture.ReadPixels(screenRect, 0, 0);
         texture.Apply();
 
         _camera.targetTexture = null;
         RenderTexture.active = null;
         Destroy(render);
 
-        Sprite sprite = Sprite.Create(texture, new Rect(Mathf.RoundToInt(mousePos.x) - 360,
-                                                        Mathf.RoundToInt(mousePos.y) - 240,
+        Sprite sprite = Sprite.Create(texture, new Rect(Mathf.RoundToInt(mousePos.x) - angleRect.size.x * 0.5f,
+                                                        Mathf.RoundToInt(mousePos.y) - angleRect.size.y * 0.5f,
                                                         720,
                                                         480), Vector2.zero);
 
         List<MapActor> mapActors = new List<MapActor>();
 
-        Vector2 posLB = Camera.main.ScreenToWorldPoint(mousePos - rect.size * .5f);
-        Vector2 posRT = Camera.main.ScreenToWorldPoint(mousePos + rect.size * .5f);
+        Vector2 posLB = Camera.main.ScreenToWorldPoint(mousePos - angleRect.size * .5f);
+        Vector2 posRT = Camera.main.ScreenToWorldPoint(mousePos + angleRect.size * .5f);
 
         foreach (MapActor mapActor in MapManager.Instance.Actors)
         {

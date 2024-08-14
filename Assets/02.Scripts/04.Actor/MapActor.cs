@@ -9,7 +9,7 @@ public class MapActor : MonoBehaviour
     [field: SerializeField] public ActorData ActorData { get; private set; }
     private SpriteRenderer _renderer;
 
-        public void SetData(ActorData data, int id)
+    public void SetData(ActorData data, int id)
     {
         ActorData = data;
         ActorID = id;
@@ -37,6 +37,38 @@ public class MapActor : MonoBehaviour
     {
         _renderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         _renderer.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (ReferenceEquals(ActorData, null) || ActorData.MoveVec == ActorMoveVec.None) return;
+
+        transform.Translate(ActorData.MoveVec switch
+        {
+            ActorMoveVec.LB2RT => new Vector3(1, 1, 0),
+            ActorMoveVec.RT2LB => new Vector3(-1, -1, 0),
+            ActorMoveVec.LT2RB => new Vector3(1, -1, 0),
+            ActorMoveVec.RB2LT => new Vector3(-1, 1, 0),
+            _ => Vector3.zero
+        } * Time.deltaTime 
+        * ActorData.ActorElement.ActorType switch
+        {
+            ActorType.Actor => 1,
+            ActorType.Car => 6,
+            _ => 0
+        });
+
+        if ((transform.position.y > 0 ? transform.position.y : -transform.position.y) > 55)
+        {
+            transform.position -= ActorData.MoveVec switch
+            {
+                ActorMoveVec.LB2RT => new Vector3(1, 1, 0),
+                ActorMoveVec.RT2LB => new Vector3(-1, -1, 0),
+                ActorMoveVec.LT2RB => new Vector3(1, -1, 0),
+                ActorMoveVec.RB2LT => new Vector3(-1, 1, 0),
+                _ => Vector3.zero
+            } * 110;
+        }
     }
 
     //private void OnMouseEnter()

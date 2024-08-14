@@ -5,9 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class ActorData
 {
-    public ActorData(Vector3 position, bool isFlip, Sprite idleSprite, Sprite hightLightSprite, ActorElement actorElement)
+    public ActorData(Vector3 position, ActorMoveVec moveVec, bool isFlip, Sprite idleSprite, Sprite hightLightSprite, ActorElement actorElement)
     {
         Position = position;
+        MoveVec = moveVec;
         IsFlip = isFlip;
         IdleSprite = idleSprite;
         HightLightSprite = hightLightSprite;
@@ -16,7 +17,7 @@ public class ActorData
 
     [field:Header("ActorPos")]
     [field: SerializeField] public Vector3 Position { get; private set; }
-    
+    [field :SerializeField] public ActorMoveVec MoveVec {  get; private set; }
     
     [field: Header("ActorRender")]
     [field: SerializeField] public bool IsFlip { get; private set; }
@@ -40,6 +41,14 @@ public enum ActorType
     Actor,
     Car,
     Object
+}
+public enum ActorMoveVec
+{
+    None,
+    LB2RT,
+    RT2LB,
+    LT2RB,
+    RB2LT,
 }
 public enum ActorPart
 {
