@@ -9,6 +9,12 @@ public class CapturePanel : UICanvasBase
 {
     [Header("CameraAngle")]
     [SerializeField] private Transform _cameraAngle;
+    [SerializeField] private float _angleFadeTime;
+    [SerializeField] private float _angleFadeStartScale;
+    private Coroutine _angleFadeCoroutine;
+    private Vector3 _angleOriginScale;
+    private List<Color> _angleOriginColorList;
+
     [Header("CaptureCount")]
     [SerializeField] private TMP_Text _captureCountText;
     [Header("NextDay")]
@@ -27,6 +33,18 @@ public class CapturePanel : UICanvasBase
         MainGameManager.Instance.CaptureAction += UpdateCaptureCountUI;
         //MainGameManager.Instance.CameraChangeAction += CameraAngleEnable;
         MainGameManager.Instance.DayEndAction += ShowNextDayButton;
+
+        _angleOriginScale = _cameraAngle.localScale;
+        _cameraAngle.localScale = Vector3.one * _angleFadeStartScale;
+        _angleOriginColorList = new List<Color>();
+        foreach (Image image in _cameraAngle.GetComponentsInChildren<Image>())
+        {
+            _angleOriginColorList.Add(image.color);
+            Color color = image.color;
+            color.a = 0;
+            image.color = color;
+        }
+
     }
 
     private void Update()
@@ -51,11 +69,6 @@ public class CapturePanel : UICanvasBase
         }
         else if (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0))
         {
-            // 대상을 체크하는 방법을 추가해줘야 하나?
-
-            //Vector3 cameraPos = Camera.main.ScreenToWorldPoint(mousePos);
-            //cameraPos.z = -5;
-            //Camera.main.transform.position = cameraPos;
             MainGameManager.Instance.CameraCapture(mousePos);
         }
 
@@ -84,7 +97,67 @@ public class CapturePanel : UICanvasBase
 
     private void CameraAngleEnable(bool isEnable)
     {
-        _cameraAngle.gameObject.SetActive(isEnable);
+        if (_angleFadeCoroutine != null)
+        {
+            StopCoroutine(_angleFadeCoroutine);
+        }
+        _angleFadeCoroutine = StartCoroutine(CameraFadeAnimation(isEnable));
+    }
+
+    private IEnumerator CameraFadeAnimation(bool isEnable)
+    {
+        float startScale = _cameraAngle.transform.localScale.x;
+        List<Image> angleImages = new List<Image>();
+        List<Color> imageColors = new List<Color>();
+        foreach (Image image in _cameraAngle.GetComponentsInChildren<Image>(true))
+        {
+            angleImages.Add(image);
+            imageColors.Add(image.color);
+        }
+
+        float t = 0;
+        if (isEnable)
+        {
+            _cameraAngle.gameObject.SetActive(true);
+            while (t < _angleFadeTime)
+            {
+                _cameraAngle.transform.localScale = Vector3.Lerp(Vector3.one * startScale, _angleOriginScale, t / _angleFadeTime);
+                for (int i = 0; i < angleImages.Count; i++)
+                {
+                    angleImages[i].color = Color.Lerp(imageColors[i], _angleOriginColorList[i], t / _angleFadeTime);
+                }
+                yield return null;
+                t += Time.deltaTime;
+            }
+            _cameraAngle.transform.localScale = Vector3.one;
+            for (int i = 0; i < angleImages.Count; i++)
+                angleImages[i].color = _angleOriginColorList[i];
+        }
+        else
+        {
+            List<Color> clearColors = new List<Color>();
+            foreach (Color item in imageColors)
+            {
+                Color addColor = item;
+                addColor.a = 0;
+                clearColors.Add(addColor);
+            }
+            while (t < _angleFadeTime)
+            {
+                _cameraAngle.transform.localScale = Vector3.Lerp(Vector3.one * startScale, Vector3.one * _angleFadeStartScale, t / _angleFadeTime);
+                for (int i = 0; i < angleImages.Count; i++)
+                {
+                    angleImages[i].color = Color.Lerp(imageColors[i], clearColors[i], t / _angleFadeTime);
+                }
+                yield return null;
+                t += Time.deltaTime;
+            }
+            _cameraAngle.transform.localScale = Vector3.one * _angleFadeStartScale;
+            for (int i = 0; i < angleImages.Count; i++)
+                angleImages[i].color = clearColors[i];
+            _cameraAngle.gameObject.SetActive(false);
+        }
+        _angleFadeCoroutine = null;
     }
 
     private void ShowNextDayButton()
